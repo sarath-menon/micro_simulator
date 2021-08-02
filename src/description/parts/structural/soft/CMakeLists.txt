@@ -11,9 +11,9 @@ gripper
 
 target_link_libraries(soft_lib PRIVATE
 primitives_lib
-Eigen3::Eigen
-helper_lib
-yaml-cpp
+# Eigen3::Eigen
+# helper_lib
+# yaml-cpp
 )
 
 

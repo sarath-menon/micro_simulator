@@ -16,7 +16,7 @@ class Gripper : public SoftBody {
 
 public:
   /// Loads the gripper properties from the yaml file
-  Gripper(std::string parameter_path);
+  // Gripper(std::string parameter_path);
 
 protected:
   // By default, everything is initialized to zero

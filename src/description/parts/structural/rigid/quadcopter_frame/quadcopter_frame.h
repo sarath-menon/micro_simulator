@@ -7,7 +7,7 @@ class QuadcopterFrame : public RigidBody {
 private:
 public:
   /// Loads the quadcopter properties from the yaml file
-  QuadcopterFrame(std::string parameter_path);
+  // QuadcopterFrame(std::string parameter_path);
 
   // Variables
 protected:

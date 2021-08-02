@@ -7,7 +7,7 @@ class Arm : public RigidBody {
 private:
 public:
   /// Loads the arm properties from the yaml file
-  Arm(std::string parameter_path);
+  // Arm(std::string parameter_path);
 
   // By default, everything is initialized to zero
 protected:
