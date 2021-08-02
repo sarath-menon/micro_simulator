@@ -1,7 +1,6 @@
 #pragma once
 
 #include <matrix/math.hpp>
-using namespace matrix;
 
 /// Represents a Rigid body
 class RigidBody {
@@ -20,30 +19,30 @@ public:
 
   // Inertia matrix of the rigid body
 
-  SquareMatrix<float, 3> inertia_matrix_;
+  matrix::SquareMatrix<float, 3> inertia_matrix_;
   // Position and Orietnation ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
   /// Position of the rigid body
-  Vector<float, 3> position_;
+  matrix::Vector<float, 3> position_;
 
   /// Orientation of the rigid body as Quaternion (q_0, q_x, q_y, q_z)
 
-  Quatf orientation_;
+  matrix::Quatf orientation_;
 
   // Time derivatives of Position and Orientnation
   // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
   /// Velocity of the rigid body
-  Vector<float, 3> velocity_;
+  matrix::Vector<float, 3> velocity_;
 
   // /// Time derivative of rigid body position
   // Eigen::Vector3d position_dot_;
 
   /// Time derivative of quaternion representing rigid body orientation
-  Vector<float, 4> orientation_dot_;
+  matrix::Vector<float, 4> orientation_dot_;
 
   /// Angular velocity of the rigid body
-  Vector<float, 3> angular_velocity_;
+  matrix::Vector<float, 3> angular_velocity_;
 
 public:
   /// Have to be defined in the child class

@@ -18,15 +18,15 @@ protected:
   float mass_;
 
   /// Inertia matrix of the Motor
-  SquareMatrix<float, 3> inertia_matrix_;
+  matrix::SquareMatrix<float, 3> inertia_matrix_;
 
   // Relative Position and Orietnation ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
   /// Position of the Motor
-  Vector<float, 3> relative_position_;
+  matrix::Vector<float, 3> relative_position_;
 
   /// Orientation of the Motor as Quaternion (q_0, q_x, q_y, q_z)
-  Quatf relative_orientation_;
+  matrix::Quatf relative_orientation_;
 
   // Motor in RPM ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
