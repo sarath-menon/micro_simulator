@@ -1,0 +1,14 @@
+---
+# General Rigid Body Parameters:
+
+mass: 2.1 #[kg]
+inertia_matrix: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+
+# initial_position: [0.0, 0.0, 0.0] #[m]
+# initial_orientation: [0.0, 0.0, 0.0] #[Rad] - Euler Angles
+
+# Custom Parameters:
+
+moment_arm: 0.1 #[m]
+thrust_speed_ratio: 0.1
+torque_speed_ratio: 0.1
