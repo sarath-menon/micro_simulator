@@ -16,6 +16,8 @@ src/main.cpp
 target_link_libraries(app PRIVATE 
 primitives_lib
 parts_lib
+helper_lib
 )
 
+add_subdirectory(src/helper)
 add_subdirectory(src/description)

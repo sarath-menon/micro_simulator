@@ -8,9 +8,7 @@ motor/motor.cpp
 
 target_include_directories(actuator_primitives_lib PUBLIC motor)
 
-# target_link_libraries(actuator_primitives_lib PRIVATE
-# helper_lib
-# Eigen3::Eigen
-# yaml-cpp
-# )
+target_link_libraries(actuator_primitives_lib PUBLIC
+helper_lib
+)
 

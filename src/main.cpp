@@ -16,7 +16,11 @@ int main() {
 
   /// Quadcopter motors (4)
   BldcMotor motor[4];
-  motor[0].set_mass(4);
+  motor[0].set_mass(0.05);
+  motor[0].set_max_speed(20000);
+  motor[0].set_min_speed(2000);
+
+  // motor[0].relative_position()
 
   return 0;
 }
