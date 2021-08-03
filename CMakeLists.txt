@@ -8,7 +8,6 @@ project(stm32_pm_blinky)
 
 include_directories(external/PX4-Matrix)
 include_directories(external/mavlink_c)
-# include_directories(external/PX4-Matrix)
 
 target_sources(app PRIVATE 
 src/main.cpp
@@ -16,7 +15,7 @@ src/main.cpp
 
 target_link_libraries(app PRIVATE 
 primitives_lib
-
+parts_lib
 )
 
 add_subdirectory(src/description)

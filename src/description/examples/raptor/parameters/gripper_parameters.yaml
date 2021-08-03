@@ -1,6 +1,0 @@
----
-# General Rigid Body Parameters:
-
-mass: 0.2 #[kg]
-inertia_matrix: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
-# Custom Parameters:
