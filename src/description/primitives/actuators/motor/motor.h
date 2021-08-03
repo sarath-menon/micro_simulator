@@ -72,7 +72,7 @@ public:
   void set_mass(float mass) { mass_ = mass; }
   /// Setter function
   void set_inertia_matrix(const float inertia_matrix[3][3]) {
-    matrix_copy(inertia_matrix, inertia_matrix_);
+    helper::matrix_copy(inertia_matrix, inertia_matrix_);
     // inertia_matrix_ = inertia_matrix;
   }
   /// Setter function
