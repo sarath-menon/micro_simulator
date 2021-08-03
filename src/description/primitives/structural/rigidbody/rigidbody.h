@@ -11,7 +11,7 @@ public:
   // RigidBody(){};
 
   // Variables
-public:
+protected:
   // Mass and Inertia Matrix ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
   /// Mass of the rigid body

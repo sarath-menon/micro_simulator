@@ -1,4 +1,5 @@
 #include "bldc_motor.h"
+#include "quadcopter.h"
 #include "quadcopter_frame.h"
 #include "rigidbody.h"
 
@@ -7,10 +8,9 @@
 #include <zephyr.h>
 
 int main() {
-  RigidBody obj;
-  obj.set_mass(5);
 
   QuadcopterFrame frame;
+  frame.set_mass(0.7);
 
   /// Quadcopter motors (4)
   BldcMotor motor[4];
