@@ -23,4 +23,9 @@ public:
 public:
   /// Getter function
   float time_constant() const { return time_constant_; }
+
+  /// Setter function
+  void set_time_constant(float time_constant) {
+    time_constant_ = time_constant;
+  }
 };

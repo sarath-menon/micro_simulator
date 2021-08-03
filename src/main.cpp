@@ -22,6 +22,7 @@ int main() {
   int motor_max_speed = 20000; // rpm
   int motor_min_speed = 1000;  // rpm
   float motor_distance = 0.05; /// m
+  float motor_time_constant = 0.05;
 
   //////////////////////////////////////////////////////////
 
@@ -35,6 +36,7 @@ int main() {
     motor[i].set_max_speed(motor_max_speed);
     motor[i].set_min_speed(motor_min_speed);
     motor[i].set_inertia_matrix(motor_intertia_matrix);
+    motor[i].set_time_constant(motor_time_constant);
   }
 
   matrix::Vector3f relative_position_motor1(motor_distance, 0, 0);
