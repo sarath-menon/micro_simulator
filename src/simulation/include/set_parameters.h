@@ -1,16 +1,14 @@
+#pragma once
+
 #include "bldc_motor.h"
-#include "quadcopter.h"
 #include "quadcopter_frame.h"
 #include "rigidbody.h"
 
-#include <stdio.h>
-// #include <sys/printk.h>
-#include <zephyr.h>
+#include <matrix/math.hpp>
 
-int main() {
+namespace quadcopter_description {
 
-  QuadcopterFrame frame;
-  BldcMotor motor[4];
+void set_parameters(QuadcopterFrame frame, BldcMotor motor[4]) {
 
   float frame_mass = 0.3; // kg
   float frame_intertia_matrix[3][3] = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
@@ -48,6 +46,5 @@ int main() {
   motor[1].set_relative_position(relative_position_motor1);
   motor[2].set_relative_position(relative_position_motor1);
   motor[3].set_relative_position(relative_position_motor1);
-
-  return 0;
 }
+} // namespace quadcopter_description

@@ -10,8 +10,10 @@ include_directories(external/PX4-Matrix)
 include_directories(external/mavlink_c)
 
 target_sources(app PRIVATE 
-src/main.cpp
+src/simulation/src/main.cpp
 )
+
+target_include_directories(app PRIVATE src/simulation/include)
 
 target_link_libraries(app PRIVATE 
 primitives_lib
