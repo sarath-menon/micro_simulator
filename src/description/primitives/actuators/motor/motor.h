@@ -46,23 +46,25 @@ public:
 
   // Getter Functions
 public:
-  // /// Getter function
-  // const float &mass() const { return mass_; }
-  // /// Getter function
-  // const Eigen::Matrix3d &inertia_matrix() const { return inertia_matrix_; }
-  // /// Getter function
+  /// Getter function
+  const float &mass() const { return mass_; }
+  /// Getter function
+  const matrix::SquareMatrix<float, 3> &inertia_matrix() const {
+    return inertia_matrix_;
+  }
+  /// Getter function
 
-  // const Eigen::Vector3d &relative_position() const {
-  //   return relative_position_;
-  // }
-  // /// Getter function
-  // const Eigen::Vector4d &relative_orientation() const {
-  //   return relative_orientation_;
-  // }
-  // /// Getter function
-  // const int &speed() const { return speed_; }
-  // /// Getter function
-  // const int &min_speed() const { return min_speed_; }
-  // /// Getter function
-  // const int &max_speed() const { return max_speed_; }
+  const matrix::Vector<float, 3> &relative_position() const {
+    return relative_position_;
+  }
+  /// Getter function
+  const matrix::Quatf &relative_orientation() const {
+    return relative_orientation_;
+  }
+  /// Getter function
+  const int &speed() const { return speed_; }
+  /// Getter function
+  const int &min_speed() const { return min_speed_; }
+  /// Getter function
+  const int &max_speed() const { return max_speed_; }
 };
