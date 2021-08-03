@@ -8,6 +8,8 @@
 
 namespace quadcopter_simulation {
 
-void set_initial_conditions(QuadcopterFrame frame, BldcMotor motor[4]) {}
+void set_initial_conditions(QuadcopterFrame frame, BldcMotor motor[4]) {
+  //   matrix::Vector3f
+}
 
 } // namespace quadcopter_simulation

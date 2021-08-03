@@ -24,7 +24,7 @@ protected:
   // Position and Orietnation ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
   /// Position of the rigid body
-  matrix::Vector<float, 3> position_;
+  matrix::Vector3<float> position_;
 
   /// Orientation of the rigid body as Quaternion (q_0, q_x, q_y, q_z)
 
@@ -34,7 +34,7 @@ protected:
   // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
   /// Velocity of the rigid body
-  matrix::Vector<float, 3> velocity_;
+  matrix::Vector3<float> velocity_;
 
   // /// Time derivative of rigid body position
   // Eigen::Vector3d position_dot_;
@@ -43,7 +43,7 @@ protected:
   matrix::Vector<float, 4> orientation_dot_;
 
   /// Angular velocity of the rigid body
-  matrix::Vector<float, 3> angular_velocity_;
+  matrix::Vector3<float> angular_velocity_;
 
 public:
   /// Have to be defined in the child class
@@ -58,17 +58,17 @@ public:
     return inertia_matrix_;
   }
   /// Getter function
-  const matrix::Vector<float, 3> &position() const { return position_; }
+  const matrix::Vector3<float> &position() const { return position_; }
   /// Getter function
   const matrix::Quatf &orientation() const { return orientation_; }
   /// Getter function
-  const matrix::Vector<float, 3> &velocity() const { return velocity_; }
+  const matrix::Vector3<float> &velocity() const { return velocity_; }
   /// Getter function
   const matrix::Vector<float, 4> &orientation_dot() const {
     return orientation_dot_;
   }
   /// Getter function
-  const matrix::Vector<float, 3> &angular_velocity() const {
+  const matrix::Vector3<float> &angular_velocity() const {
     return angular_velocity_;
   }
 
@@ -80,13 +80,13 @@ public:
     inertia_matrix_ = inertia_matrix;
   }
   /// Getter function
-  void set_position(matrix::Vector<float, 3> position) { position_ = position; }
+  void set_position(matrix::Vector3<float> position) { position_ = position; }
 
   /// Getter function
   matrix::Quatf orientation() { return orientation_; }
 
   /// Getter function
-  void set_velocity(matrix::Vector<float, 3> velocity) { velocity_ = velocity; }
+  void set_velocity(matrix::Vector3<float> velocity) { velocity_ = velocity; }
 
   /// Getter function
   void set_orientation_dot(matrix::Vector<float, 4> orientation_dot) {
@@ -94,7 +94,7 @@ public:
   }
 
   /// Getter function
-  void angular_velocity(matrix::Vector<float, 3> set_angular_velocity) {
+  void angular_velocity(matrix::Vector3<float> set_angular_velocity) {
     angular_velocity_ = set_angular_velocity;
   }
 };

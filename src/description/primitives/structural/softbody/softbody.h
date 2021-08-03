@@ -23,7 +23,7 @@ protected:
   // Position and Orietnation ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
   /// Position of the soft body
-  matrix::Vector<float, 3> position_;
+  matrix::Vector3<float> position_;
 
   /// Orientation of the soft body as Quaternion (q_0, q_x, q_y, q_z)
   matrix::Quatf orientation_;
@@ -32,7 +32,7 @@ protected:
   // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
   /// Time derivative of soft body position
-  matrix::Vector<float, 3> position_dot_;
+  matrix::Vector3<float> position_dot_;
 
   /// Time derivative of quaternion representing soft body  orientation
   matrix::Vector<float, 4> orientation_dot_;

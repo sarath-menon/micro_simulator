@@ -24,7 +24,7 @@ protected:
   // Relative Position and Orietnation ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
   /// Position of the Motor
-  matrix::Vector<float, 3> relative_position_;
+  matrix::Vector3<float> relative_position_;
 
   /// Orientation of the Motor as Quaternion (q_0, q_x, q_y, q_z)
   matrix::Quatf relative_orientation_;
@@ -54,7 +54,7 @@ public:
     return inertia_matrix_;
   }
   /// Getter function
-  const matrix::Vector<float, 3> &relative_position() const {
+  const matrix::Vector3<float> &relative_position() const {
     return relative_position_;
   }
   /// Getter function
@@ -77,7 +77,7 @@ public:
     inertia_matrix_ = inertia_matrix;
   }
   /// Setter function
-  void set_relative_position(matrix::Vector<float, 3> relative_position) {
+  void set_relative_position(matrix::Vector3<float> relative_position) {
     relative_position_ = relative_position;
   }
   /// Setter function
