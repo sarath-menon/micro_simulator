@@ -10,9 +10,7 @@ softbody/softbody.cpp
 target_include_directories(structural_primitives_lib PUBLIC rigidbody)
 target_include_directories(structural_primitives_lib PUBLIC softbody)
 
-# target_link_libraries(structural_primitives_lib PRIVATE
-# helper_lib
-# Eigen3::Eigen
-# yaml-cpp
-# )
+target_link_libraries(structural_primitives_lib PUBLIC
+helper_lib
+)
 
