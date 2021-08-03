@@ -8,8 +8,12 @@
 
 namespace quadcopter_simulation {
 
+float initial_position[3] = {0, 0, 0};
+float initial_orientation[4] = {1, 0, 0, 0};
+
 void set_initial_conditions(QuadcopterFrame frame, BldcMotor motor[4]) {
-  //   matrix::Vector3f
+
+  //////////////////////
 }
 
 } // namespace quadcopter_simulation

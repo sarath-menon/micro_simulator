@@ -11,4 +11,4 @@ include_directories(external/mavlink_c)
 
 add_subdirectory(src/helper)
 add_subdirectory(src/description)
-add_subdirectory(src/simulation)
+add_subdirectory(src/simulation_app)
