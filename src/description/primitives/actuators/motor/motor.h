@@ -53,7 +53,6 @@ public:
     return inertia_matrix_;
   }
   /// Getter function
-
   const matrix::Vector<float, 3> &relative_position() const {
     return relative_position_;
   }
@@ -67,4 +66,25 @@ public:
   const int &min_speed() const { return min_speed_; }
   /// Getter function
   const int &max_speed() const { return max_speed_; }
+
+  /// Setter function
+  void set_mass(float mass) { mass_ = mass; }
+  /// Setter function
+  void set_inertia_matrix(matrix::SquareMatrix<float, 3> inertia_matrix) {
+    inertia_matrix_ = inertia_matrix;
+  }
+  /// Setter function
+  void set_relative_position(matrix::Vector<float, 3> relative_position) {
+    relative_position_ = relative_position;
+  }
+  /// Setter function
+  void set_relative_orientation(matrix::Quatf relative_orientation) {
+    relative_orientation_ = relative_orientation;
+  }
+  /// Setter function
+  void set_speed(int speed) { speed_ = speed; }
+  /// Setter function
+  void set_min_speed(int min_speed) { min_speed_ = min_speed; }
+  /// Setter function
+  void set_max_speed(int max_speed) { max_speed_ = max_speed; }
 };

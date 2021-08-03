@@ -4,7 +4,7 @@
 #include "rigidbody.h"
 
 #include <stdio.h>
-#include <sys/printk.h>
+// #include <sys/printk.h>
 #include <zephyr.h>
 
 int main() {
@@ -16,6 +16,7 @@ int main() {
 
   /// Quadcopter motors (4)
   BldcMotor motor[4];
+  motor[0].set_mass(4);
 
   return 0;
 }
