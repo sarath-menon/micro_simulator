@@ -19,8 +19,14 @@ protected:
 
   // Geometrical Properties ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-  /// Distance from the quadcopter's center of mass to the propellor
-  float moment_arm_ = 0;
+  // /// Distance from the quadcopter's center of mass to the propellor
+  // float moment_arm_ = 0;
+
+  /// Linear drag coefficient
+  float linear_drag_coeff_ = 0;
+
+  /// Angular drag coefficient
+  float angular_drag_coeff_ = 0;
 
 public:
   /// Quadcopter Dynamics
@@ -28,5 +34,21 @@ public:
 
 public:
   /// Getter function
-  float moment_arm() const { return moment_arm_; }
+  // float moment_arm() const { return moment_arm_; }
+
+  /// Getter function
+  float linear_drag_coeff() const { return linear_drag_coeff_; }
+
+  /// Getter function
+  float angular_drag_coeff() const { return angular_drag_coeff_; }
+
+  /// Setter function
+  void set_linear_drag_coeff(float linear_drag_coeff) {
+    linear_drag_coeff_ = linear_drag_coeff;
+  }
+
+  /// Setter function
+  void set_angular_drag_coeff(float angular_drag_coeff) {
+    angular_drag_coeff_ = angular_drag_coeff;
+  }
 };

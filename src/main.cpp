@@ -12,8 +12,10 @@ int main() {
   QuadcopterFrame frame;
   BldcMotor motor[4];
 
-  float quadcopter_mass = 0.3;
+  float frame_mass = 0.3;
   float frame_intertia_matrix[3][3] = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
+  float linear_drag_coeff = 1;
+  float angular_drag_coeff = 0.025;
 
   float motor_mass = 0.05;
   float motor_intertia_matrix[3][3] = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
@@ -21,8 +23,12 @@ int main() {
   int motor_min_speed = 1000;
   float motor_distance = 0.05;
 
-  frame.set_mass(quadcopter_mass);
+  //////////////////////////////////////////////////////////
+
+  frame.set_mass(frame_mass);
   frame.set_inertia_matrix(frame_intertia_matrix);
+  frame.set_linear_drag_coeff(linear_drag_coeff);
+  frame.set_angular_drag_coeff(angular_drag_coeff);
 
   for (int i = 0; i < 4; i++) {
     motor[i].set_mass(motor_mass);
