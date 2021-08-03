@@ -75,21 +75,8 @@ public:
   /// Setter function
   void set_mass(float mass) { mass_ = mass; }
 
-  /// Getter function
-  // void set_inertia_matrix(const float inertia_matrix[3][3]) {
-  //   inertia_matrix_(0, 0) = inertia_matrix[0][0];
-  //   inertia_matrix_(0, 1) = inertia_matrix[0][1];
-  //   inertia_matrix_(0, 2) = inertia_matrix[0][2];
-  //   inertia_matrix_(1, 0) = inertia_matrix[1][0];
-  //   inertia_matrix_(1, 1) = inertia_matrix[1][1];
-  //   inertia_matrix_(1, 2) = inertia_matrix[1][2];
-  //   inertia_matrix_(2, 0) = inertia_matrix[2][0];
-  //   inertia_matrix_(2, 1) = inertia_matrix[2][1];
-  //   inertia_matrix_(2, 2) = inertia_matrix[2][2];
-  // }
-
-  void set_inertia_matrix(float temp[3][3]) {
-    matrix::SquareMatrix<float, 3> inertia_matrix(temp);
+  void set_inertia_matrix(float data[3][3]) {
+    matrix::SquareMatrix<float, 3> inertia_matrix(data);
     inertia_matrix_ = inertia_matrix;
   }
   /// Getter function
