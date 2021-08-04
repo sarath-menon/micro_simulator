@@ -1,8 +1,8 @@
-#include "bldc_motor.h"
+#include "motor_propeller_pair.h"
 
 // BldcMotor::BldcMotor(std::string parameter_path) : Motor(parameter_path) {}
 
-void BldcMotor::Dynamics() {
+void MotorPropellerPair::Dynamics() {
   float thrust_desired;
   float thrust_current;
 

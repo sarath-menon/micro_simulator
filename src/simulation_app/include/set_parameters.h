@@ -1,6 +1,6 @@
 #pragma once
 
-#include "bldc_motor.h"
+#include "motor_propeller_pair.h"
 #include "quadcopter_frame.h"
 #include "rigidbody.h"
 
@@ -20,7 +20,7 @@ int motor_min_speed = 1000;  // rpm
 float motor_distance = 0.05; /// m
 float motor_time_constant = 0.05;
 
-void set_parameters(QuadcopterFrame frame, BldcMotor motor[4]) {
+void set_parameters(QuadcopterFrame frame, MotorPropellerPair motor[4]) {
 
   frame.set_mass(frame_mass);
   frame.set_inertia_matrix(frame_intertia_matrix);

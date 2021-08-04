@@ -1,7 +1,7 @@
 #include "set_initial_conditions.h"
 #include "set_parameters.h"
 
-#include "bldc_motor.h"
+#include "motor_propeller_pair.h"
 #include "quadcopter_frame.h"
 #include "rigidbody.h"
 
@@ -11,7 +11,7 @@
 
 int main() {
   QuadcopterFrame frame;
-  BldcMotor motor[4];
+  MotorPropellerPair motor[4];
 
   quadcopter_description::set_parameters(frame, motor);
   quadcopter_simulation::set_initial_conditions(frame, motor);

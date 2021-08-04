@@ -2,7 +2,7 @@
 #include "motor.h"
 
 /// Represents the swinging arm
-class BldcMotor : public Motor {
+class MotorPropellerPair : public Motor {
 
 private:
 public:
