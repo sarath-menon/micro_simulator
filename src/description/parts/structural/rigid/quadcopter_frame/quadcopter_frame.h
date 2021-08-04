@@ -28,9 +28,23 @@ protected:
   /// Angular drag coefficient
   float angular_drag_coeff_ = 0;
 
+  // Variables for dynamics function ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  /// velocity of rigid body
+  matrix::Vector3<float> velocity_;
+
+  /// 2nd Time derivative of rigid body position
+  matrix::Vector3<float> position_ddot_;
+
+  /// Angular acceleration of the rigid body
+  matrix::Vector3<float> angular_acceleration_;
+
+  /// Rotation matrix - body to inertial frame
+  matrix::Dcmf _R_OB;
+
 public:
   /// Quadcopter Dynamics
-  virtual void Dynamics(){};
+  virtual void Dynamics() override;
 
 public:
   /// Getter function
