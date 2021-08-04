@@ -7,20 +7,11 @@ class QuadcopterFrame : public RigidBody {
 private:
 public:
   /// Loads the quadcopter properties from the yaml file
-  // QuadcopterFrame(std::string parameter_path);
+  QuadcopterFrame();
 
   // Variables
 protected:
-  // /// Orientation of the quadcopter as Rotation Matrix (R_OB)
-  // Eigen::Matrix3d orientation_rotation_matrix = Eigen::Matrix3d::Zero();
-
-  // /// Orientation of the quadcopter as Euler Angles (roll, pitch, yaw)
-  // Eigen::Vector3d orientation_euler_angles = Eigen::Vector3d::Zero();
-
   // Geometrical Properties ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-  // /// Distance from the quadcopter's center of mass to the propellor
-  // float moment_arm_ = 0;
 
   /// Linear drag coefficient
   float linear_drag_coeff_ = 0;
@@ -42,25 +33,25 @@ protected:
   /// Rotation matrix - body to inertial frame
   matrix::Dcmf _R_OB;
 
+  /// No need to computer inverse of inertia matrix for each function ca;;
+  matrix::SquareMatrix<float, 3> inertia_matrix_inv_;
+
 public:
   /// Quadcopter Dynamics
   virtual void Dynamics() override;
 
 public:
   /// Getter function
-  // float moment_arm() const { return moment_arm_; }
-
-  /// Getter function
   float linear_drag_coeff() const { return linear_drag_coeff_; }
 
   /// Getter function
   float angular_drag_coeff() const { return angular_drag_coeff_; }
 
+public:
   /// Setter function
   void set_linear_drag_coeff(float linear_drag_coeff) {
     linear_drag_coeff_ = linear_drag_coeff;
   }
-
   /// Setter function
   void set_angular_drag_coeff(float angular_drag_coeff) {
     angular_drag_coeff_ = angular_drag_coeff;

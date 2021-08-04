@@ -2,9 +2,13 @@
 
 // BldcMotor::BldcMotor(std::string parameter_path) : Motor(parameter_path) {}
 
-float BldcMotor::Dynamics(float thrust_desired, float thrust_current) {
-  float thrust_dot = (1 / time_constant_) * (thrust_desired - thrust_current);
-  return thrust_dot;
+void BldcMotor::Dynamics() {
+  float thrust_desired;
+  float thrust_current;
+
+  /////////
+
+  thrust_dot = (1 / time_constant_) * (thrust_desired - thrust_current);
 }
 
 // Setter functions
