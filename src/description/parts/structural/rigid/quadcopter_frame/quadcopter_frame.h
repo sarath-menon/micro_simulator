@@ -63,6 +63,12 @@ public:
   /// Getter function
   float moment_arm() const { return moment_arm_; }
 
+  /// Getter function
+  matrix::Vector3<float> position_ddot() const { return position_ddot_; }
+
+  /// Getter function
+  matrix::Vector3<float> angular_acceleration() const { return angular_acceleration_; }
+
 public:
   /// Setter function
   void set_linear_drag_coeff(float linear_drag_coeff)

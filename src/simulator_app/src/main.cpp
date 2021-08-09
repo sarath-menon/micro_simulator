@@ -20,20 +20,25 @@ int main()
   QuadcopterFrame frame;
   MotorPropellerPair motor[4];
   // Imu imu;
-  // Simulator sim;
+  Simulator sim;
 
   quadcopter_description::set_parameters(frame, motor);
   quadcopter_simulation::set_initial_conditions(frame, motor);
 
-  motor[0].Dynamics(commanded_motor_speeds[0]);
-  motor[1].Dynamics(commanded_motor_speeds[1]);
-  motor[2].Dynamics(commanded_motor_speeds[2]);
-  motor[3].Dynamics(commanded_motor_speeds[3]);
+  for (int i = 0; i < 4; i++){
+    motor[i].Dynamics(commanded_motor_speeds[i]);
+    sim.euler_forward_step(motor[i].actual_thrust(), motor[i].actual_thrust_dot(), 0.01);
+  }
 
   float motor_thrusts[4] = {motor[0].actual_thrust(), motor[1].actual_thrust(),
                             motor[2].actual_thrust(), motor[3].actual_thrust()};
 
   frame.Dynamics(motor_thrusts);
+
+  sim.euler_forward_step(frame.position(), frame.position_dot(), 0.01);
+  sim.euler_forward_step(frame.position_dot(), frame.position_ddot(), 0.01);
+  sim.euler_forward_step(frame.orientation(), frame.orientation_dot(), 0.01);
+
   // imu.Dynamics();
 
   return 0;

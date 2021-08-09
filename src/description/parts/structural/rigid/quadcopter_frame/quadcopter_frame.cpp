@@ -27,16 +27,10 @@ void QuadcopterFrame::Motorthrust_to_BodyThrustTorque(const float motor_thrusts[
   torque_(2) = thrust_vector_(3);
 }
 
+/// Equations of motion for a quadcopter frames
 void QuadcopterFrame::Dynamics(const float motor_thrusts[4])
 {
-
-  // Call function to get net_thrust and torque from individual propeller thrusts
-
-  // matrix::Vector3f thrust;
-  // matrix::Vector3f torque;
   matrix::Vector3f gravity(0, 0, 9.81);
-
-  /////////
 
   _R_OB = matrix::Dcm<float>(orientation_);
   // Velocity

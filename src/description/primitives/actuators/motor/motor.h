@@ -5,7 +5,8 @@
 using namespace matrix;
 
 /// Represents a Motor
-class Motor {
+class Motor
+{
 
 public:
   /// Loads the Motor properties from the yaml file
@@ -23,11 +24,11 @@ protected:
 
   // Relative Position and Orietnation ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-  /// Position of the Motor
-  matrix::Vector3<float> relative_position_;
+  // /// Position of the Motor
+  // matrix::Vector3<float> relative_position_;
 
-  /// Orientation of the Motor as Quaternion (q_0, q_x, q_y, q_z)
-  matrix::Quatf relative_orientation_;
+  // /// Orientation of the Motor as Quaternion (q_0, q_x, q_y, q_z)
+  // matrix::Quatf relative_orientation_;
 
   // Motor in RPM ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -50,17 +51,22 @@ public:
   /// Getter function
   const float &mass() const { return mass_; }
   /// Getter function
-  const matrix::SquareMatrix<float, 3> &inertia_matrix() const {
+  const matrix::SquareMatrix<float, 3> &inertia_matrix() const
+  {
     return inertia_matrix_;
   }
-  /// Getter function
-  const matrix::Vector3<float> &relative_position() const {
-    return relative_position_;
-  }
-  /// Getter function
-  const matrix::Quatf &relative_orientation() const {
-    return relative_orientation_;
-  }
+
+  // /// Getter function
+  // const matrix::Vector3<float> &relative_position() const
+  // {
+  //   return relative_position_;
+  // }
+  // /// Getter function
+  // const matrix::Quatf &relative_orientation() const
+  // {
+  //   return relative_orientation_;
+  // }
+
   /// Getter function
   const int &speed() const { return speed_; }
   /// Getter function
@@ -72,18 +78,20 @@ public:
   void set_mass(float mass) { mass_ = mass; }
 
   /// Setter function
-  void set_inertia_matrix(float data[3][3]) {
+  void set_inertia_matrix(float data[3][3])
+  {
     matrix::SquareMatrix<float, 3> inertia_matrix(data);
     inertia_matrix_ = inertia_matrix;
   }
-  /// Setter function
-  void set_relative_position(matrix::Vector3<float> relative_position) {
-    relative_position_ = relative_position;
-  }
-  /// Setter function
-  void set_relative_orientation(matrix::Quatf relative_orientation) {
-    relative_orientation_ = relative_orientation;
-  }
+
+  // /// Setter function
+  // void set_relative_position(matrix::Vector3<float> relative_position) {
+  //   relative_position_ = relative_position;
+  // }
+  // /// Setter function
+  // void set_relative_orientation(matrix::Quatf relative_orientation) {
+  //   relative_orientation_ = relative_orientation;
+  // }
   /// Setter function
   void set_speed(int speed) { speed_ = speed; }
   /// Setter function

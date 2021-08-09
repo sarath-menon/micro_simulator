@@ -36,6 +36,10 @@ public:
   /// Getter function
   float actual_thrust() const { return actual_thrust_; }
 
+  /// Getter function
+  float actual_thrust_dot() const { return actual_thrust_dot_; }
+
+public:
   /// Setter function
   void set_time_constant(float time_constant)
   {
