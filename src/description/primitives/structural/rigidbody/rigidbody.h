@@ -81,10 +81,10 @@ public:
   void set_position(matrix::Vector3<float> position) { position_ = position; }
 
  /// Setter function
-  matrix::Quatf orientation() { return orientation_; }
+  void set_orientation(matrix::Quatf orientation) { orientation_ = orientation; }
 
  /// Setter function
-  void set_velocity(matrix::Vector3<float> position_dot) {
+  void set_position_dot(matrix::Vector3<float> position_dot) {
     position_dot_ = position_dot;
   }
 
@@ -93,7 +93,7 @@ public:
     orientation_dot_ = orientation_dot;
   }
  /// Setter function
-  void angular_velocity(matrix::Vector3<float> set_angular_velocity) {
-    angular_velocity_ = set_angular_velocity;
+  void set_angular_velocity(matrix::Vector3<float> angular_velocity) {
+    angular_velocity_ = angular_velocity;
   }
 };
