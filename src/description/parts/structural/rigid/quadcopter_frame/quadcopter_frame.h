@@ -26,7 +26,8 @@ protected:
   /// Layout matrix
   matrix::SquareMatrix<float, 4> layout_;
 
-  matrix::Vector<float, 4> thrust_vector_;
+  matrix::Vector3f thrust_;
+  matrix::Vector3f torque_;
 
   // Variables for dynamics function ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 

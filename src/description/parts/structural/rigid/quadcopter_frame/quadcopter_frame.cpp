@@ -15,7 +15,16 @@ void QuadcopterFrame::Motorthrust_to_BodyThrustTorque(const float motor_thrusts[
   motor_thrusts_(1) = motor_thrusts[1];
   motor_thrusts_(2) = motor_thrusts[2];
   motor_thrusts_(3) = motor_thrusts[3];
-  thrust_vector_ = layout_ * motor_thrusts_;
+
+  matrix::Vector<float, 4> thrust_vector_ = layout_ * motor_thrusts_;
+
+  thrust_(0) = 0;
+  thrust_(1) = 0;
+  thrust_(2) = thrust_vector_(0);
+
+  torque_(0) = thrust_vector_(1);
+  torque_(1) = thrust_vector_(2);
+  torque_(2) = thrust_vector_(3);
 }
 
 void QuadcopterFrame::Dynamics(const float motor_thrusts[4])
@@ -23,8 +32,8 @@ void QuadcopterFrame::Dynamics(const float motor_thrusts[4])
 
   // Call function to get net_thrust and torque from individual propeller thrusts
 
-  matrix::Vector3f thrust;
-  matrix::Vector3f torque;
+  // matrix::Vector3f thrust;
+  // matrix::Vector3f torque;
   matrix::Vector3f gravity(0, 0, 9.81);
 
   /////////
@@ -34,7 +43,7 @@ void QuadcopterFrame::Dynamics(const float motor_thrusts[4])
   position_dot_ = velocity_;
 
   // Acceleration
-  position_ddot_ = _R_OB * thrust + gravity;
+  position_ddot_ = _R_OB * thrust_ + gravity;
 
   // Angular velocity
   orientation_dot_ = orientation_.derivative1(angular_velocity_);
@@ -42,5 +51,5 @@ void QuadcopterFrame::Dynamics(const float motor_thrusts[4])
   // Angular acceleration
   angular_acceleration_ =
       inertia_matrix_inv_ *
-      (torque - angular_velocity_ - inertia_matrix_ * angular_velocity_);
+      (torque_ - angular_velocity_ - inertia_matrix_ * angular_velocity_);
 }
