@@ -3,11 +3,15 @@
 // s
 // Setter functions
 
-QuadcopterFrame ::QuadcopterFrame() {
+QuadcopterFrame ::QuadcopterFrame()
+{
   inertia_matrix_inv_ = inv(inertia_matrix_);
 }
 
-void QuadcopterFrame::Dynamics() {
+void QuadcopterFrame::Dynamics(const float motor_thrusts[4])
+{
+
+  // Call function to get net_thrust and torque from individual propeller thrusts
 
   matrix::Vector3f thrust;
   matrix::Vector3f torque;

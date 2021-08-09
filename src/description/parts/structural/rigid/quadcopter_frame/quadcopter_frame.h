@@ -2,7 +2,8 @@
 #include "rigidbody.h"
 
 /// Represents the quadcopter
-class QuadcopterFrame : public RigidBody {
+class QuadcopterFrame : public RigidBody
+{
 
 private:
 public:
@@ -37,8 +38,11 @@ protected:
   matrix::SquareMatrix<float, 3> inertia_matrix_inv_;
 
 public:
+  /// Converts individual motor thrusts to net body thrust and torues about x,y,x, axes
+  void motor_thrust_to_body_thrust_and_torque();
+
   /// Quadcopter Dynamics
-  virtual void Dynamics() override;
+  void Dynamics(const float motor_thrusts[4]);
 
 public:
   /// Getter function
@@ -49,11 +53,13 @@ public:
 
 public:
   /// Setter function
-  void set_linear_drag_coeff(float linear_drag_coeff) {
+  void set_linear_drag_coeff(float linear_drag_coeff)
+  {
     linear_drag_coeff_ = linear_drag_coeff;
   }
   /// Setter function
-  void set_angular_drag_coeff(float angular_drag_coeff) {
+  void set_angular_drag_coeff(float angular_drag_coeff)
+  {
     angular_drag_coeff_ = angular_drag_coeff;
   }
 };

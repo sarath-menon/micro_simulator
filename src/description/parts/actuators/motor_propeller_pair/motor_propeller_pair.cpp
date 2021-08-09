@@ -2,13 +2,12 @@
 
 // BldcMotor::BldcMotor(std::string parameter_path) : Motor(parameter_path) {}
 
-void MotorPropellerPair::Dynamics() {
-  float thrust_desired;
-  float thrust_current;
+void MotorPropellerPair::Dynamics(const float &commanded_motor_speed)
+{
+  // get motor thrust from motor speed here. For now, declsre variable
+  float commanded_thrust;
 
-  /////////
-
-  thrust_dot = (1 / time_constant_) * (thrust_desired - thrust_current);
+  actual_thrust_dot_ = (1 / time_constant_) * (commanded_thrust - actual_thrust_);
 }
 
 // Setter functions
