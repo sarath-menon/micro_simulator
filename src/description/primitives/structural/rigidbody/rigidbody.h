@@ -67,6 +67,8 @@ public:
   const matrix::Vector3<float> &angular_velocity() const {
     return angular_velocity_;
   }
+   
+
 
   /// Setter function
   void set_mass(float mass) { mass_ = mass; }

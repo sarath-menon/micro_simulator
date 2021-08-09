@@ -38,6 +38,7 @@ int main()
   sim.euler_forward_step(frame.position(), frame.position_dot(), 0.01);
   sim.euler_forward_step(frame.position_dot(), frame.position_ddot(), 0.01);
   sim.euler_forward_step(frame.orientation(), frame.orientation_dot(), 0.01);
+  sim.euler_forward_step(frame.angular_velocity(), frame.angular_acceleration(), 0.01);
 
   // imu.Dynamics();
 

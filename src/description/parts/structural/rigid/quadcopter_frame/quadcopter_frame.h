@@ -69,6 +69,8 @@ public:
   /// Getter function
   matrix::Vector3<float> angular_acceleration() const { return angular_acceleration_; }
 
+  
+
 public:
   /// Setter function
   void set_linear_drag_coeff(float linear_drag_coeff)
