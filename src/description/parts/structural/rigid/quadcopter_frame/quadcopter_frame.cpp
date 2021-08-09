@@ -8,6 +8,16 @@ QuadcopterFrame ::QuadcopterFrame()
   inertia_matrix_inv_ = inv(inertia_matrix_);
 }
 
+void QuadcopterFrame::Motorthrust_to_BodyThrustTorque(const float motor_thrusts[4])
+{
+  matrix::Vector<float, 4> motor_thrusts_;
+  motor_thrusts_(0) = motor_thrusts[0];
+  motor_thrusts_(1) = motor_thrusts[1];
+  motor_thrusts_(2) = motor_thrusts[2];
+  motor_thrusts_(3) = motor_thrusts[3];
+  thrust_vector_ = layout_ * motor_thrusts_;
+}
+
 void QuadcopterFrame::Dynamics(const float motor_thrusts[4])
 {
 
