@@ -1,5 +1,4 @@
 #include "quadcopter.h"
-#include "simulator.h"
 #include <iostream>
 
 int main() {

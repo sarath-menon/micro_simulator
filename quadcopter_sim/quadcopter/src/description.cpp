@@ -4,8 +4,8 @@
 void Quadcopter::set_parameters() {
 
   // Load YAML file containing quadcopter properties
-  YAML::Node yaml_file =
-      YAML::LoadFile("src/simulator_app/parameters/parameters.yaml");
+  YAML::Node yaml_file = YAML::LoadFile(
+      "quadcopter_sim/quadcopter_sim_app/parameters/quad_properties.yaml");
   ///////////////////////////////////////////////////////////////////////////////////////////
   // Set frame parameters
   ///////////////////////////////////////////////////////////////////////////////////////////

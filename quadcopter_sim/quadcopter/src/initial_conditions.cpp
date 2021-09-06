@@ -4,8 +4,8 @@
 void Quadcopter::set_initial_conditions() {
 
   // Load YAML file containing quadcopter properties
-  YAML::Node yaml_file =
-      YAML::LoadFile("src/simulator_app/parameters/initial_conditions.yaml");
+  YAML::Node yaml_file = YAML::LoadFile(
+      "quadcopter_sim/quadcopter_sim_app/parameters/initial_conditions.yaml");
 
   // Set initial position
   matrix::Vector3f intial_position;
