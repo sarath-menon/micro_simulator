@@ -4,7 +4,6 @@
 /// Represents the quadcopter
 class QuadcopterFrame : public RigidBody {
 
-private:
 public:
   /// Loads the quadcopter properties from the yaml file
   QuadcopterFrame();
@@ -25,8 +24,8 @@ protected:
   /// Layout matrix
   matrix::SquareMatrix<float, 4> layout_;
 
-  matrix::Vector3f thrust_;
-  matrix::Vector3f torque_;
+  // matrix::Vector3f thrust_;
+  // matrix::Vector3f torque_;
 
   // Variables for dynamics function ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -45,13 +44,19 @@ protected:
   /// No need to computer inverse of inertia matrix in each function call
   matrix::SquareMatrix<float, 3> inertia_matrix_inv_;
 
+  // Constants
+private:
+  // Acceleration due to gravity
+  const matrix::Vector3f gravity_acc = matrix::Vector3f(0, 0, 9.81);
+
 public:
   /// Converts individual motor thrusts to net body thrust and torues about
   /// x,y,x, axes
-  void Motorthrust_to_BodyThrustTorque(const float motor_thrusts[4]);
+  // void Motorthrust_to_BodyThrustTorque(const float motor_thrusts[4]);
 
   /// Quadcopter Dynamics
-  void Dynamics(const float motor_thrusts[4]);
+  void Dynamics(const matrix::Vector3<float> body_thrust,
+                const matrix::Vector3<float> body_torque);
 
 public:
   /// Getter function
