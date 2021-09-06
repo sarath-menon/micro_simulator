@@ -6,7 +6,7 @@
 #include <yaml-cpp/yaml.h>
 
 /// Represents the quadcopter
-class QuadcopterDescription : public RigidBody {
+class Quadcopter : public RigidBody {
 
 private:
   // Load YAML file containing quadcopter properties
@@ -18,12 +18,16 @@ public:
   QuadcopterFrame frame;
   MotorPropellerPair motor[4];
 
-public:
+  // Private variables
+private:
   float roll_pitch_max_ = 0;
 
+  // Public function
 public:
   /// Loads the quadcopter properties from the yaml file
   void set_parameters();
+  // Read sensor values
+  void sensor_read();
 
 public:
   /// Getter function
@@ -34,12 +38,4 @@ public:
   void set_roll_pitch_max(float roll_pitch_max) {
     roll_pitch_max_ = roll_pitch_max;
   }
-
-protected:
-  // Geometrical Properties ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-  /// Linear drag coefficient
-  // std::string which_numerical_integrator;
-
-  /// Numerical Integrators
 };

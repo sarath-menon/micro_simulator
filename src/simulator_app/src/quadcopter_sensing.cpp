@@ -1,7 +1,7 @@
 #include "quadcopter.h"
 
 /// Represents the quadcopter
-void Quadcopter::set_parameters() {
+void Quadcopter::sensor_read() {
 
   ///////////////////////////////////////////////////////////////////////////////////////////
   // Set frame parameters
