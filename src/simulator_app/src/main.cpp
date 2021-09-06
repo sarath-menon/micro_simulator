@@ -13,7 +13,13 @@ int main() {
 
   std::cout << "Linear drag coefficients:" << quad.frame.linear_drag_coeff_x()
             << '\t' << quad.frame.linear_drag_coeff_y() << '\t'
-            << quad.frame.linear_drag_coeff_z() << '\t';
+            << quad.frame.linear_drag_coeff_z() << '\n';
+
+  std::cout << "Length of Moment arm:" << quad.frame.moment_arm() << '\n';
+
+  std::cout << "Maximum motor thrust:" << quad.motor[0].thrust_max() << '\n';
+
+  std::cout << "Minimum motor thrust:" << quad.motor[0].thrust_min() << '\n';
 
   // QuadcopterFrame frame;
   // MotorPropellerPair motor[4];

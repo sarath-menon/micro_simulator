@@ -4,7 +4,7 @@
 mass: 0.7 #[kg]
 
 # Geometrical properties
-arm_length: 0.171
+moment_arm: 0.171
 inertia_xx: 0.0034
 inertia_yy: 0.0034
 inertia_zz: 0.0020
@@ -23,10 +23,10 @@ angular_drag_coeff_y: 0.2
 angular_drag_coeff_z: 0.1
 
 # Maximum thrust can be produced by the motors
-motor_thrust_max: 6.25
+thrust_max: 6.25
 
 # Maximum thrust can be produced by the motors
-motor_thrust_min: 1.75
+thrust_min: 1.75
 
 # Maximum roll angle
 roll_max: 0.5

@@ -2,11 +2,16 @@
 
 /// Represents the quadcopter
 void QuadcopterDescription::set_parameters() {
-  // Set arm length
+
+  ///////////////////////////////////////////////////////////////////////////////////////////
+  // Set frame parameters
+  ///////////////////////////////////////////////////////////////////////////////////////////
+
+  // Set frame mass
   frame.set_mass(yaml_file["mass"].as<float>());
 
-  // Set mass
-  frame.set_moment_arm(yaml_file["arm_length"].as<float>());
+  // Set moment arm
+  frame.set_moment_arm(yaml_file["moment_arm"].as<float>());
 
   // Set inertia matrix
   float frame_intertia[3][3] = {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}};
@@ -31,4 +36,19 @@ void QuadcopterDescription::set_parameters() {
 
   frame.set_linear_drag_coeff(linear_drag_coeff);
   frame.set_angular_drag_coeff(angular_drag_coeff);
+
+  ///////////////////////////////////////////////////////////////////////////////////////////
+  // Set motor parameters
+  ///////////////////////////////////////////////////////////////////////////////////////////
+
+  // Set frame mass
+  for (int i = 0; i < 4; i++) {
+    motor[i].set_mass(yaml_file["moment_arm"].as<float>());
+    // motor[i].set_max_speed(yaml_file["moment_arm"].as<float>());
+    // motor[i].set_min_speed(yaml_file["moment_arm"].as<float>());
+    motor[i].set_thrust_max(yaml_file["thrust_max"].as<float>());
+    motor[i].set_thrust_min(yaml_file["thrust_min"].as<float>());
+
+    motor[i].set_time_constant(yaml_file["moment_arm"].as<float>());
+  }
 }

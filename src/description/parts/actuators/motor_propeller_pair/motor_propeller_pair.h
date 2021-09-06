@@ -2,8 +2,7 @@
 #include "motor.h"
 
 /// Represents the swinging arm
-class MotorPropellerPair : public Motor
-{
+class MotorPropellerPair : public Motor {
 
 private:
 public:
@@ -25,6 +24,12 @@ protected:
   /// Rate of change of thrust for the motor propellor pair
   float actual_thrust_dot_ = 0;
 
+  /// Maximum thrust produced by propeller
+  float thrust_max_ = 0;
+
+  // Minimum m thrust produced by propeller
+  float thrust_min_ = 0;
+
 public:
   /// Arm Dynamics
   void Dynamics(const float &commanded_motor_speed);
@@ -39,10 +44,21 @@ public:
   /// Getter function
   float actual_thrust_dot() const { return actual_thrust_dot_; }
 
+  /// Getter function
+  const float thrust_max() const { return thrust_max_; }
+
+  /// Getter function
+  const float thrust_min() const { return thrust_min_; }
+
 public:
   /// Setter function
-  void set_time_constant(float time_constant)
-  {
+  void set_time_constant(float time_constant) {
     time_constant_ = time_constant;
   }
+
+  /// Setter function
+  void set_thrust_max(float thrust_max) { thrust_max_ = thrust_max; }
+
+  /// Setter function
+  void set_thrust_min(float thrust_min) { thrust_min_ = thrust_min; }
 };
