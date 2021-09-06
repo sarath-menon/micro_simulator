@@ -8,11 +8,6 @@
 /// Represents the quadcopter
 class Quadcopter : public RigidBody {
 
-private:
-  // Load YAML file containing quadcopter properties
-  YAML::Node yaml_file =
-      YAML::LoadFile("src/simulator_app/parameters/quadcopter.yaml");
-
 public:
   // Load parts from the library
   QuadcopterFrame frame;
@@ -26,6 +21,8 @@ private:
 public:
   /// Loads the quadcopter properties from the yaml file
   void set_parameters();
+  // Set initial conditions of the quadcopter
+  void set_initial_conditions();
   // Read sensor values
   void sensor_read();
 

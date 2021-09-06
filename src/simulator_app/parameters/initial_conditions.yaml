@@ -1,0 +1,22 @@
+# Controller Parameters:
+
+# Initial Position
+x: 0
+y: 0
+z: 1
+
+# Initial Velocity
+x_dot: 0
+y_dot: 0
+z_dot: 0
+
+# Initial Orientation
+q_w: 0
+q_x: 0
+q_y: 0
+q_z: 0
+
+# Initial Angular velocity
+omega_x: 0
+omega_x: 0
+omega_x: 0

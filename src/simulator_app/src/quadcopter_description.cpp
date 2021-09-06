@@ -3,6 +3,9 @@
 /// Represents the quadcopter
 void Quadcopter::set_parameters() {
 
+  // Load YAML file containing quadcopter properties
+  YAML::Node yaml_file =
+      YAML::LoadFile("src/simulator_app/parameters/parameters.yaml");
   ///////////////////////////////////////////////////////////////////////////////////////////
   // Set frame parameters
   ///////////////////////////////////////////////////////////////////////////////////////////
@@ -17,8 +20,8 @@ void Quadcopter::set_parameters() {
   float frame_intertia[3][3] = {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}};
 
   frame_intertia[0][0] = yaml_file["inertia_xx"].as<float>();
-  frame_intertia[1][1] = yaml_file["inertia_xx"].as<float>();
-  frame_intertia[2][2] = yaml_file["inertia_xx"].as<float>();
+  frame_intertia[1][1] = yaml_file["inertia_yy"].as<float>();
+  frame_intertia[2][2] = yaml_file["inertia_zz"].as<float>();
 
   frame.set_inertia_matrix(frame_intertia);
 

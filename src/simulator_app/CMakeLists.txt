@@ -3,6 +3,7 @@
 add_executable(quad_3d
 src/main.cpp
 src/quadcopter_description.cpp
+src/quadcopter_initial_conditions.cpp
 )
 
 

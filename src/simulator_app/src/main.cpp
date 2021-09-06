@@ -8,6 +8,11 @@ int main() {
 
   Quadcopter quad;
   quad.set_parameters();
+  quad.set_initial_conditions();
+
+  ///////////////////////////////////////////////////////////////////////////////////////////
+  // Display parameters
+  ///////////////////////////////////////////////////////////////////////////////////////////
 
   std::cout << "Quadcopter Mass:" << quad.frame.mass() << '\n';
 
@@ -22,6 +27,12 @@ int main() {
   std::cout << "Minimum motor thrust:" << quad.motor[0].thrust_min() << '\n';
 
   std::cout << "Max roll and pitch angles:" << quad.roll_pitch_max() << '\n';
+
+  ///////////////////////////////////////////////////////////////////////////////////////////
+  // Display Initial Conditions
+  ///////////////////////////////////////////////////////////////////////////////////////////
+
+  std::cout << "Initial Position:" << quad.frame.position()(0) << '\t';
 
   // for (int i = 0; i < 4; i++) {
   //   motor[i].Dynamics(commanded_motor_speeds[i]);
