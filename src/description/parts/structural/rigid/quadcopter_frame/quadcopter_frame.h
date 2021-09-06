@@ -48,7 +48,7 @@ private:
 
 public:
   /// Quadcopter Dynamics
-  void Dynamics(const matrix::Vector3<float> body_thrust,
+  void dynamics(const matrix::Vector3<float> body_thrust,
                 const matrix::Vector3<float> body_torque);
 
 public:

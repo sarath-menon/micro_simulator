@@ -26,7 +26,7 @@ QuadcopterFrame ::QuadcopterFrame() {
 // }
 
 /// Equations of motion for a quadcopter frames
-void QuadcopterFrame::Dynamics(const matrix::Vector3<float> body_thrust,
+void QuadcopterFrame::dynamics(const matrix::Vector3<float> body_thrust,
                                const matrix::Vector3<float> body_torque) {
 
   // Declare for now

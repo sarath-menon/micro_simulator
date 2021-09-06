@@ -35,8 +35,8 @@ public:
   void sensor_read();
   // // COnvert motor speed to thrust and torque exerted in quadcopter frame
   void motor_speed_to_thrust_torque(float motor_commands[4]);
-  // Quadcopter dynamics [overrides base class Rigidbody]
-  virtual void dynamics() override;
+  // Quadcopter dynamics
+  void dynamics(float motor_commands[4]);
 
 public:
   /// Getter function

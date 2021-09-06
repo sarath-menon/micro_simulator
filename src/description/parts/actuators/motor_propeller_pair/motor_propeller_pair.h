@@ -37,7 +37,7 @@ protected:
 
 public:
   /// Arm Dynamics
-  void Dynamics(const float &commanded_motor_speed);
+  void dynamics(const float commanded_motor_speed);
 
   constexpr static float motor_speed_to_thrust_map(const float motor_command) {
 
