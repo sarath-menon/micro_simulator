@@ -32,7 +32,22 @@ int main() {
   // Display Initial Conditions
   ///////////////////////////////////////////////////////////////////////////////////////////
 
-  std::cout << "Initial Position:" << quad.frame.position()(0) << '\t';
+  std::cout << "Initial Position:" << quad.frame.position()(0) << '\t'
+            << quad.frame.position()(1) << '\t' << quad.frame.position()(2)
+            << '\n';
+
+  std::cout << "Initial Orientation:" << quad.frame.orientation()(0) << '\t'
+            << quad.frame.orientation()(1) << '\t'
+            << quad.frame.orientation()(2) << '\t'
+            << quad.frame.orientation()(3) << '\n';
+
+  std::cout << "Initial Velocity:" << quad.frame.velocity()(0) << '\t'
+            << quad.frame.velocity()(1) << '\t' << quad.frame.velocity()(2)
+            << '\n';
+
+  std::cout << "Initial Angular Velocity:" << quad.frame.angular_velocity()(0)
+            << '\t' << quad.frame.angular_velocity()(1) << '\t'
+            << quad.frame.angular_velocity()(2) << '\n';
 
   // for (int i = 0; i < 4; i++) {
   //   motor[i].Dynamics(commanded_motor_speeds[i]);
@@ -46,18 +61,6 @@ int main() {
   //                           motor[3].actual_thrust()};
 
   // frame.Dynamics(motor_thrusts);
-
-  // frame.set_position(
-  //     sim.euler_forward_step(frame.position(), frame.position_dot(),
-  //     0.01));
-  // frame.set_position(sim.euler_forward_step(frame.position_dot(),
-  //                                           frame.position_ddot(),
-  //                                           0.01));
-  // frame.set_orientation(sim.euler_forward_step(frame.orientation(),
-  //                                              frame.orientation_dot(),
-  //                                              0.01));
-  // frame.set_angular_velocity(sim.euler_forward_step(
-  //     frame.angular_velocity(), frame.angular_acceleration(), 0.01));
 
   // imu.Dynamics();
 

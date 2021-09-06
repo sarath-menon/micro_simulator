@@ -18,5 +18,5 @@ q_z: 0
 
 # Initial Angular velocity
 omega_x: 0
-omega_x: 0
-omega_x: 0
+omega_y: 0
+omega_z: 0

@@ -26,10 +26,13 @@ protected:
   /// Position of the rigid body
   matrix::Vector3<float> position_;
 
-  /// position_dot of the rigid body
+  /// Derivative of position represenation of the rigid body
   matrix::Vector3<float> position_dot_;
-  /// Orientation of the rigid body as Quaternion (q_0, q_x, q_y, q_z)
 
+  /// Velocity of the rigid body
+  matrix::Vector3<float> velocity_;
+
+  /// Orientation of the rigid body as Quaternion (q_0, q_x, q_y, q_z)
   matrix::Quatf orientation_;
 
   // Time derivatives of Position and Orientnation
@@ -60,6 +63,8 @@ public:
   /// Getter function
   const matrix::Vector3<float> &position_dot() const { return position_dot_; }
   /// Getter function
+  const matrix::Vector3<float> &velocity() const { return velocity_; }
+  /// Getter function
   const matrix::Quatf &orientation_dot() const { return orientation_dot_; }
   /// Getter function
   const matrix::Vector3<float> &angular_velocity() const {
@@ -85,6 +90,8 @@ public:
   void set_position_dot(matrix::Vector3<float> position_dot) {
     position_dot_ = position_dot;
   }
+
+  void set_velocity(matrix::Vector3<float> velocity) { velocity_ = velocity; }
 
   /// Setter function
   void set_orientation_dot(matrix::Quatf orientation_dot) {
