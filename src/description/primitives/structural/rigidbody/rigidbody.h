@@ -41,7 +41,7 @@ protected:
   /// Time derivative of quaternion representing rigid body orientation
   matrix::Quatf orientation_dot_;
 
-  /// Angularposition_dot of the rigid body
+  /// Angular position_dot of the rigid body
   matrix::Vector3<float> angular_velocity_;
 
 public:

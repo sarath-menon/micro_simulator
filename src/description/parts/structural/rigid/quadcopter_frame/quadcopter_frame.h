@@ -29,8 +29,14 @@ protected:
   /// velocity of rigid body
   matrix::Vector3<float> velocity_;
 
-  /// 2nd Time derivative of rigid body position
-  matrix::Vector3<float> position_ddot_;
+  /// velocity of rigid body
+  matrix::Vector3<float> acceleration_;
+
+  // /// 2nd Time derivative of rigid body position
+  // matrix::Vector3<float> position_ddot_;
+
+  // /// 2nd Time derivative of rigid body orientation
+  // matrix::Vector3<float> orientation_ddot_;
 
   /// Angular acceleration of the rigid body
   matrix::Vector3<float> angular_acceleration_;
@@ -46,10 +52,15 @@ private:
   // Acceleration due to gravity
   const matrix::Vector3f gravity_acc = matrix::Vector3f(0, 0, 9.81);
 
+  // Declare dt for now
+  constexpr static float dt = 0.01;
+
 public:
   /// Quadcopter Dynamics
   void dynamics(const matrix::Vector3<float> body_thrust,
                 const matrix::Vector3<float> body_torque);
+
+  void euler_step();
 
 public:
   /// Getter function
@@ -65,8 +76,8 @@ public:
   /// Getter function
   float moment_arm() const { return moment_arm_; }
 
-  /// Getter function
-  matrix::Vector3<float> position_ddot() const { return position_ddot_; }
+  // /// Getter function
+  // matrix::Vector3<float> position_ddot() const { return position_ddot_; }
 
   /// Getter function
   matrix::Vector3<float> angular_acceleration() const {

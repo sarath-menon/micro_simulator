@@ -6,6 +6,7 @@ src/description.cpp
 src/initial_conditions.cpp
 src/common.cpp
 src/dynamics.cpp
+src/euler_integration.cpp
 )
 
 

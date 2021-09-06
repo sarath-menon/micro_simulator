@@ -1,0 +1,14 @@
+# Controller Parameters:
+
+# Altitude Target
+altitude_target: 8
+horizontal_target: 4
+
+# Euler Integration Timestep
+dt: 0.01
+
+# Number of timesteps to be simulated
+euler_steps: 500
+
+# Fastdds publishers activate
+pose_pub: true

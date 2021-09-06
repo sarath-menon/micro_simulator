@@ -21,9 +21,9 @@ private:
   float propeller_thrusts[4] = {0, 0, 0, 0};
 
   // Net thrust acting on the quadcopter
-  float body_thrust = 0;
+  matrix::Vector3<float> body_thrust;
   // Net torques acting on the quadcopter
-  float body_torques[3] = {0, 0, 0};
+  matrix::Vector3<float> body_torques;
 
   // Public function
 public:
@@ -37,6 +37,8 @@ public:
   void motor_speed_to_thrust_torque(float motor_commands[4]);
   // Quadcopter dynamics
   void dynamics(float motor_commands[4]);
+  // Quadcopter dynamics
+  void euler_step();
 
 public:
   /// Getter function
