@@ -2,8 +2,7 @@
 #include "rigidbody.h"
 
 /// Represents the quadcopter
-class QuadcopterFrame : public RigidBody
-{
+class QuadcopterFrame : public RigidBody {
 
 private:
 public:
@@ -15,10 +14,10 @@ protected:
   // Geometrical Properties ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
   /// Linear drag coefficient
-  float linear_drag_coeff_ = 0;
+  matrix::Vector3f linear_drag_coeff_;
 
-  /// Angular drag coefficient
-  float angular_drag_coeff_ = 0;
+  // /// Angular drag coefficient
+  matrix::Vector3f angular_drag_coeff_;
 
   /// Distance from the quadcopter's center of mass to the propellor
   float moment_arm_ = 0;
@@ -47,7 +46,8 @@ protected:
   matrix::SquareMatrix<float, 3> inertia_matrix_inv_;
 
 public:
-  /// Converts individual motor thrusts to net body thrust and torues about x,y,x, axes
+  /// Converts individual motor thrusts to net body thrust and torues about
+  /// x,y,x, axes
   void Motorthrust_to_BodyThrustTorque(const float motor_thrusts[4]);
 
   /// Quadcopter Dynamics
@@ -55,10 +55,14 @@ public:
 
 public:
   /// Getter function
-  float linear_drag_coeff() const { return linear_drag_coeff_; }
+  float linear_drag_coeff_x() const { return linear_drag_coeff_(0); }
+  float linear_drag_coeff_y() const { return linear_drag_coeff_(1); }
+  float linear_drag_coeff_z() const { return linear_drag_coeff_(2); }
 
   /// Getter function
-  float angular_drag_coeff() const { return angular_drag_coeff_; }
+  float angular_drag_coeff_x() const { return angular_drag_coeff_(0); }
+  float angular_drag_coeff_y() const { return angular_drag_coeff_(1); }
+  float angular_drag_coeff_z() const { return angular_drag_coeff_(2); }
 
   /// Getter function
   float moment_arm() const { return moment_arm_; }
@@ -67,24 +71,20 @@ public:
   matrix::Vector3<float> position_ddot() const { return position_ddot_; }
 
   /// Getter function
-  matrix::Vector3<float> angular_acceleration() const { return angular_acceleration_; }
-
-  
+  matrix::Vector3<float> angular_acceleration() const {
+    return angular_acceleration_;
+  }
 
 public:
-  /// Setter function
-  void set_linear_drag_coeff(float linear_drag_coeff)
-  {
+  void set_linear_drag_coeff(float data[3]) {
+    matrix::Vector3f linear_drag_coeff(data);
     linear_drag_coeff_ = linear_drag_coeff;
   }
-  /// Setter function
-  void set_angular_drag_coeff(float angular_drag_coeff)
-  {
+
+  void set_angular_drag_coeff(float data[3]) {
+    matrix::Vector3f angular_drag_coeff(data);
     angular_drag_coeff_ = angular_drag_coeff;
   }
 
-  void set_moment_arm(float moment_arm)
-  {
-    angular_drag_coeff_ = moment_arm;
-  }
+  void set_moment_arm(float moment_arm) { moment_arm_ = moment_arm; }
 };

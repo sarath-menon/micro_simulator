@@ -1,0 +1,34 @@
+# General Rigid Body Parameters:
+
+# Mass of the quadcopter
+mass: 0.7 #[kg]
+
+# Geometrical properties
+arm_length: 0.171
+inertia_xx: 0.0034
+inertia_yy: 0.0034
+inertia_zz: 0.0020
+
+# Motor time constant
+motor_time_constant: 0.05
+
+# Air drag coefficients
+linear_drag_coeff_x: 0.6
+linear_drag_coeff_y: 0.6
+linear_drag_coeff_z: 1.2
+
+# Air drag coefficients
+angular_drag_coeff_x: 0.2
+angular_drag_coeff_y: 0.2
+angular_drag_coeff_z: 0.1
+
+# Maximum thrust can be produced by the motors
+motor_thrust_max: 6.25
+
+# Maximum thrust can be produced by the motors
+motor_thrust_min: 1.75
+
+# Maximum roll angle
+roll_max: 0.5
+# Relation btw square of motor speed and motor thrust
+# kf: 6.11e+06

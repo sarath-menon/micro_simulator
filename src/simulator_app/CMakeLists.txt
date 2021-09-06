@@ -1,14 +1,21 @@
 
-target_sources(app PRIVATE 
+
+add_executable(quad_3d
 src/main.cpp
+src/quadcopter_description.cpp
 )
 
-target_include_directories(app  PRIVATE include)
 
-target_link_libraries(app  PRIVATE 
+target_include_directories(quad_3d PRIVATE include)
+
+target_link_libraries(quad_3d  PRIVATE 
 primitives_lib
 parts_lib
 simulator_lib
 helper_lib
 )
 
+
+target_link_libraries(quad_3d  PRIVATE 
+yaml-cpp
+)
