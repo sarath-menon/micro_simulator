@@ -9,6 +9,7 @@ int main() {
 
   QuadcopterDescription quad;
   quad.set_parameters();
+
   std::cout << "Quadcopter Mass:" << quad.frame.mass() << '\n';
 
   std::cout << "Linear drag coefficients:" << quad.frame.linear_drag_coeff_x()
@@ -21,13 +22,7 @@ int main() {
 
   std::cout << "Minimum motor thrust:" << quad.motor[0].thrust_min() << '\n';
 
-  // QuadcopterFrame frame;
-  // MotorPropellerPair motor[4];
-  // Imu imu;
-  // Simulator sim;
-
-  // quadcopter_description::set_parameters(frame, motor);
-  // quadcopter_simulation::set_initial_conditions(frame, motor);
+  std::cout << "Max roll and pitch angles:" << quad.roll_pitch_max() << '\n';
 
   // for (int i = 0; i < 4; i++) {
   //   motor[i].Dynamics(commanded_motor_speeds[i]);

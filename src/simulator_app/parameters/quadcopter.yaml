@@ -29,6 +29,6 @@ thrust_max: 6.25
 thrust_min: 1.75
 
 # Maximum roll angle
-roll_max: 0.5
+roll_pitch_max: 0.5
 # Relation btw square of motor speed and motor thrust
 # kf: 6.11e+06

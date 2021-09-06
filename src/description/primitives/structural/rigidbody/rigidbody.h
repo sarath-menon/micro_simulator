@@ -48,7 +48,7 @@ public:
   // Getter Functions
 public:
   /// Getter function
-  const float &mass() const { return mass_; }
+  const float mass() const { return mass_; }
   /// Getter function
   const matrix::SquareMatrix<float, 3> &inertia_matrix() const {
     return inertia_matrix_;

@@ -19,8 +19,21 @@ public:
   MotorPropellerPair motor[4];
 
 public:
+  float roll_pitch_max_ = 0;
+
+public:
   /// Loads the quadcopter properties from the yaml file
   void set_parameters();
+
+public:
+  /// Getter function
+  const float roll_pitch_max() const { return roll_pitch_max_; }
+
+public:
+  /// Setter function
+  void set_roll_pitch_max(float roll_pitch_max) {
+    roll_pitch_max_ = roll_pitch_max;
+  }
 
 protected:
   // Geometrical Properties ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

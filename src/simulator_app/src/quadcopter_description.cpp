@@ -51,4 +51,11 @@ void QuadcopterDescription::set_parameters() {
 
     motor[i].set_time_constant(yaml_file["moment_arm"].as<float>());
   }
+
+  ///////////////////////////////////////////////////////////////////////////////////////////
+  // Set general quadcopter parameters
+  ///////////////////////////////////////////////////////////////////////////////////////////
+
+  // Set maximum roll and pitch angle
+  set_roll_pitch_max(yaml_file["roll_pitch_max"].as<float>());
 }
