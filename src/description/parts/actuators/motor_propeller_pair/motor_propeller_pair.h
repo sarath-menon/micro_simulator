@@ -30,16 +30,29 @@ protected:
   // Minimum m thrust produced by propeller
   float thrust_min_ = 0;
 
+  // Relation btw square of motor speed and motor thrust
+  constexpr static float k_f_ = 0.0000000611;
+  // Relation btw  motor thrust and drag torque
+  constexpr static float k_t_ = 0.0000000611;
+
 public:
   /// Arm Dynamics
   void Dynamics(const float &commanded_motor_speed);
+
+  constexpr static float motor_speed_to_thrust_map(const float motor_command) {
+
+    float commanded_thrust = motor_command * k_f_;
+
+    // For now, let actual thrust = commanded thryst
+    return commanded_thrust;
+  }
 
 public:
   /// Getter function
   float time_constant() const { return time_constant_; }
 
   /// Getter function
-  float actual_thrust() const { return actual_thrust_; }
+  float actual_thrust() { return actual_thrust_; }
 
   /// Getter function
   float actual_thrust_dot() const { return actual_thrust_dot_; }
@@ -49,6 +62,10 @@ public:
 
   /// Getter function
   const float thrust_min() const { return thrust_min_; }
+  /// Getter function
+  constexpr static float k_f() { return k_f_; }
+  /// Getter function
+  constexpr static float k_t() { return k_t_; }
 
 public:
   /// Setter function

@@ -17,6 +17,14 @@ public:
 private:
   float roll_pitch_max_ = 0;
 
+  // Thrust produced by each propeller
+  float propeller_thrusts[4] = {0, 0, 0, 0};
+
+  // Net thrust acting on the quadcopter
+  float body_thrust = 0;
+  // Net torques acting on the quadcopter
+  float body_torques[3] = {0, 0, 0};
+
   // Public function
 public:
   /// Loads the quadcopter properties from the yaml file
@@ -25,6 +33,10 @@ public:
   void set_initial_conditions();
   // Read sensor values
   void sensor_read();
+  // // COnvert motor speed to thrust and torque exerted in quadcopter frame
+  void motor_speed_to_thrust_torque(float motor_commands[4]);
+  // Quadcopter dynamics [overrides base class Rigidbody]
+  virtual void dynamics() override;
 
 public:
   /// Getter function

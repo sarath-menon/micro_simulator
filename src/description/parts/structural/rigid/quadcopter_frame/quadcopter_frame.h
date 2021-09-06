@@ -24,9 +24,6 @@ protected:
   /// Layout matrix
   matrix::SquareMatrix<float, 4> layout_;
 
-  // matrix::Vector3f thrust_;
-  // matrix::Vector3f torque_;
-
   // Variables for dynamics function ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
   /// velocity of rigid body
@@ -50,10 +47,6 @@ private:
   const matrix::Vector3f gravity_acc = matrix::Vector3f(0, 0, 9.81);
 
 public:
-  /// Converts individual motor thrusts to net body thrust and torues about
-  /// x,y,x, axes
-  // void Motorthrust_to_BodyThrustTorque(const float motor_thrusts[4]);
-
   /// Quadcopter Dynamics
   void Dynamics(const matrix::Vector3<float> body_thrust,
                 const matrix::Vector3<float> body_torque);

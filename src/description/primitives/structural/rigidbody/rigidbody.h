@@ -46,7 +46,7 @@ protected:
 
 public:
   /// Have to be defined in the child class
-  virtual void Dynamics(){};
+  virtual void dynamics(){};
 
   // Getter Functions
 public:
