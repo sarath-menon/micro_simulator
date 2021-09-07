@@ -17,4 +17,5 @@ helper_lib
 
 target_link_libraries(quad_3d  PRIVATE 
 yaml-cpp
+simulator_lib
 )
