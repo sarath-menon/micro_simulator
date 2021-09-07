@@ -14,15 +14,15 @@ quadcopter_lib
 primitives_lib
 parts_lib
 helper_lib
+controller_lib
+simulator_lib
+mocap_fastdds_lib
 )
 
 
 target_link_libraries(quad_3d  PRIVATE 
 yaml-cpp
-simulator_lib
 mahi::gui
-msg_lib
-mocap_fastdds_lib
 fastcdr 
 fastrtps
 )

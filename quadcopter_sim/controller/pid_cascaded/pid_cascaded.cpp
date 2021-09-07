@@ -1,10 +1,10 @@
 #include "pid_cascaded.h"
 
-float PidCascadedController::altitude_controller(const Quad2D &quad,
+float PidCascadedController::altitude_controller(const Quadcopter &quad,
                                                  const float altitude_target,
                                                  const float dt) {
   // Compute error
-  const float altitude_error = altitude_target - quad.z_mes();
+  const float altitude_error = altitude_target - quad.position()(2);
 
   // Compute control input
   float thrust_command =
@@ -18,10 +18,10 @@ float PidCascadedController::altitude_controller(const Quad2D &quad,
 };
 
 float PidCascadedController::horizontal_controller(
-    const Quad2D &quad, const float horizontal_target, const float dt) {
+    const Quadcopter &quad, const float horizontal_target, const float dt) {
 
   // Compute error
-  const float horizontal_error = horizontal_target - quad.x_mes();
+  const float horizontal_error = horizontal_target - quad.position()(0);
 
   // Compute required attitude
   float attitude_command =
@@ -32,14 +32,15 @@ float PidCascadedController::horizontal_controller(
   return attitude_command;
 };
 
-float PidCascadedController::attitude_controller(const Quad2D &quad,
+float PidCascadedController::attitude_controller(const Quadcopter &quad,
                                                  const float attitude_target,
                                                  const float dt) {
-  const float angle_error = attitude_target - quad.beta_mes();
+  const float angle_error = attitude_target - quad.frame.arm_length();
 
   float torque_command = attitude_pid(angle_error, k_p__b, k_i__b, k_d__b, dt);
 
-  torque_command = limit(torque_command, quad.torque_max(), -quad.torque_max());
+  torque_command =
+      limit(torque_command, quad.roll_torque_max(), -quad.pitch_torque_max());
 
   return torque_command;
 };

@@ -1,6 +1,6 @@
 #pragma once
 #include "math_helper.h"
-#include "quad_2d.h"
+#include "quadcopter.h"
 
 class PidCascadedController {
 
@@ -34,10 +34,10 @@ private:
                      const float k_d, const float dt);
 
 public:
-  float altitude_controller(const Quad2D &quad, const float altitude_target,
+  float altitude_controller(const Quadcopter &quad, const float altitude_target,
                             const float dt);
-  float horizontal_controller(const Quad2D &quad, const float horizontal_target,
-                              const float dt);
-  float attitude_controller(const Quad2D &quad, const float attitude_target,
+  float horizontal_controller(const Quadcopter &quad,
+                              const float horizontal_target, const float dt);
+  float attitude_controller(const Quadcopter &quad, const float attitude_target,
                             const float dt);
 };

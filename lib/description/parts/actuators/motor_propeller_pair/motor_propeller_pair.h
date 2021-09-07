@@ -58,10 +58,10 @@ public:
   float actual_thrust_dot() const { return actual_thrust_dot_; }
 
   /// Getter function
-  const float thrust_max() const { return thrust_max_; }
+  float thrust_max() const { return thrust_max_; }
 
   /// Getter function
-  const float thrust_min() const { return thrust_min_; }
+  float thrust_min() const { return thrust_min_; }
   /// Getter function
   constexpr static float k_f() { return k_f_; }
   /// Getter function

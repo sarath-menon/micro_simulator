@@ -10,7 +10,9 @@ pid_cascaded
 )
 
 target_link_libraries(controller_lib PRIVATE
-model_lib
+quadcopter_lib
+primitives_lib
+parts_lib
 yaml-cpp
 )
 

@@ -13,10 +13,10 @@ void Quadcopter::motor_speed_to_thrust_torque(const float motor_commands[4]) {
 
   // Compute net torque acting on the quadcopter
   body_torques(0) =
-      (propeller_thrusts[1] - propeller_thrusts[3]) * frame.moment_arm();
+      (propeller_thrusts[1] - propeller_thrusts[3]) * frame.arm_length();
 
   body_torques(1) =
-      (propeller_thrusts[0] - propeller_thrusts[2]) * frame.moment_arm();
+      (propeller_thrusts[0] - propeller_thrusts[2]) * frame.arm_length();
 
   body_torques(2) = (propeller_thrusts[0] - propeller_thrusts[1] +
                      propeller_thrusts[2] - propeller_thrusts[2]) *

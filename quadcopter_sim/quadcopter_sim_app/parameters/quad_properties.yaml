@@ -4,7 +4,7 @@
 mass: 0.7 #[kg]
 
 # Geometrical properties
-moment_arm: 0.171
+arm_length: 0.171
 inertia_xx: 0.0034
 inertia_yy: 0.0034
 inertia_zz: 0.0020
@@ -28,7 +28,8 @@ thrust_max: 6.25
 # Maximum thrust can be produced by the motors
 thrust_min: 1.75
 
-# Maximum roll angle
-roll_pitch_max: 0.5
+# Maximum roll and pitch angle
+roll_max: 0.5
+pitch_max: 0.5
 # Relation btw square of motor speed and motor thrust
 # kf: 6.11e+06

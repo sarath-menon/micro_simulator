@@ -16,7 +16,11 @@ public:
 
   // Private variables
 private:
-  float roll_pitch_max_ = 0;
+  // Maximum roll angle for quadcopter
+  float roll_max_ = 0;
+
+  // Maximum pitch angle for quadcopter
+  float pitch_max_ = 0;
 
   // Thrust produced by each propeller
   float propeller_thrusts[4] = {0, 0, 0, 0};
@@ -26,6 +30,18 @@ private:
   // Net torques acting on the quadcopter
   matrix::Vector3<float> body_torques;
 
+  // Maximum thrust can be produced by the quadcopter
+  float thrust_max_ = motor[0].thrust_max() * 4;
+
+  // Maximum thrust can be produced by the quadcopter
+  float thrust_min_ = motor[0].thrust_min() * 4;
+
+  // Maximum torque that can be produced by the motors
+  const float roll_torque_max_ =
+      (motor[1].thrust_max() - motor[1].thrust_min()) * frame.arm_length();
+
+  const float pitch_torque_max_ =
+      (motor[0].thrust_max() - motor[0].thrust_min()) * frame.arm_length();
   // Public function
 public:
   /// Loads the quadcopter properties from the yaml file
@@ -43,11 +59,21 @@ public:
 
 public:
   /// Getter function
-  const float roll_pitch_max() const { return roll_pitch_max_; }
+  const float roll_max() const { return roll_max_; }
+  /// Getter function
+  const float pitch_max() const { return pitch_max_; }
+  /// Getter function
+  const float thrust_max() const { return thrust_max_; }
+  /// Getter function
+  const float thrust_min() const { return thrust_min_; }
+  /// Getter function
+  const float roll_torque_max() const { return roll_torque_max_; }
+  /// Getter function
+  const float pitch_torque_max() const { return pitch_torque_max_; }
 
 public:
   /// Setter function
-  void set_roll_pitch_max(float roll_pitch_max) {
-    roll_pitch_max_ = roll_pitch_max;
-  }
+  void set_roll_max(float roll_max) { roll_max_ = roll_max; }
+  /// Setter function
+  void set_pitch_max(float pitch_max) { pitch_max_ = pitch_max; }
 };

@@ -19,7 +19,7 @@ protected:
   matrix::Matrix3f angular_drag_coeff_;
 
   /// Distance from the quadcopter's center of mass to the propellor
-  float moment_arm_ = 0;
+  float arm_length_ = 0;
 
   /// Layout matrix
   matrix::SquareMatrix<float, 4> layout_;
@@ -71,7 +71,7 @@ public:
   float angular_drag_coeff_z() const { return angular_drag_coeff_(0, 0); }
 
   /// Getter function
-  float moment_arm() const { return moment_arm_; }
+  float arm_length() const { return arm_length_; }
 
   // /// Getter function
   // matrix::Vector3<float> position_ddot() const { return position_ddot_; }
@@ -95,5 +95,5 @@ public:
     angular_drag_coeff_ = diag(angular_drag_coeff);
   }
 
-  void set_moment_arm(float moment_arm) { moment_arm_ = moment_arm; }
+  void set_arm_length(float arm_length) { arm_length_ = arm_length; }
 };
