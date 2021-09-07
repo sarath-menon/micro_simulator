@@ -22,10 +22,10 @@ float torque_yaw_plot[euler_timesteps];
 float t_plot[euler_timesteps];
 
 // Plot axes limits
-const int x_min = 0;
-const int x_max = 5;
-const int y_min = 0;
-const int y_max = 20;
+constexpr static int x_min = 0;
+constexpr static int x_max = 5;
+constexpr static int y_min = 0;
+constexpr static int y_max = 20;
 
 } // namespace plot_var
 
