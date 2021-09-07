@@ -30,7 +30,11 @@ int main() {
     // quad.dynamics(ff_thrust, torque_command);
     quad.euler_step(sim.dt());
 
-    std::cout << "Altitude:" << quad.position()(2) << '\n';
+    // std::cout << "Altitude:" << quad.position()(2) << '\n';
+    // std::cout << "Quadcopter acceleration:" << quad.frame.acceleration()(0)
+    //           << '\t' << quad.frame.acceleration()(1) << '\t'
+    //           << quad.frame.acceleration()(2) << '\n';
+    std::cout << std::endl;
 
     if (plot_flags::plot_enable) {
       // Set variables for plotting

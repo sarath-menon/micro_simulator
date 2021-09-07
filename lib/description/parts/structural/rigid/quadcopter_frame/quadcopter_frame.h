@@ -77,6 +77,9 @@ public:
   // matrix::Vector3<float> position_ddot() const { return position_ddot_; }
 
   /// Getter function
+  matrix::Vector3<float> acceleration() const { return acceleration_; }
+
+  /// Getter function
   matrix::Vector3<float> angular_acceleration() const {
     return angular_acceleration_;
   }
