@@ -14,3 +14,4 @@ find_package(yaml-cpp CONFIG REQUIRED)
 
 add_subdirectory(lib)
 add_subdirectory(quadcopter_sim)
+add_subdirectory(external)
