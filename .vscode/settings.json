@@ -78,6 +78,10 @@
         "utility": "cpp",
         "valarray": "cpp",
         "variant": "cpp",
-        "vector": "cpp"
+        "vector": "cpp",
+        "clocale": "cpp",
+        "condition_variable": "cpp",
+        "coroutine": "cpp",
+        "regex": "cpp"
     }
 }

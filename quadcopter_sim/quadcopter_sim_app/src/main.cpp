@@ -38,7 +38,15 @@ int main() {
 
     if (plot_flags::plot_enable) {
       // Set variables for plotting
+      plot_var::x_plot[i] = quad.position()(0);
+      plot_var::y_plot[i] = quad.position()(1);
       plot_var::z_plot[i] = quad.position()(2);
+
+      Eulerf euler_orientation(quad.orientation());
+      plot_var::roll_angle_plot[i] = euler_orientation(0);
+      plot_var::pitch_angle_plot[i] = euler_orientation(1);
+      plot_var::yaw_angle_plot[i] = euler_orientation(2);
+
       plot_var::t_plot[i] = i * sim.dt();
     }
   }

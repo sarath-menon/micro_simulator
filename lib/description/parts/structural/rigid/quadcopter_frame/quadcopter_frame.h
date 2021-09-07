@@ -13,7 +13,9 @@ protected:
   // Geometrical Properties ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
   /// Linear drag coefficient
-  matrix::Vector3f linear_drag_coeff_;
+  // matrix::Vector3f linear_drag_coeff_;
+
+  matrix::Matrix3f linear_drag_coeff_;
 
   // /// Angular drag coefficient
   matrix::Vector3f angular_drag_coeff_;
@@ -61,9 +63,9 @@ public:
 
 public:
   /// Getter function
-  float linear_drag_coeff_x() const { return linear_drag_coeff_(0); }
-  float linear_drag_coeff_y() const { return linear_drag_coeff_(1); }
-  float linear_drag_coeff_z() const { return linear_drag_coeff_(2); }
+  float linear_drag_coeff_x() const { return linear_drag_coeff_(0, 0); }
+  float linear_drag_coeff_y() const { return linear_drag_coeff_(1, 1); }
+  float linear_drag_coeff_z() const { return linear_drag_coeff_(2, 2); }
 
   /// Getter function
   float angular_drag_coeff_x() const { return angular_drag_coeff_(0); }
@@ -87,7 +89,7 @@ public:
 public:
   void set_linear_drag_coeff(float data[3]) {
     matrix::Vector3f linear_drag_coeff(data);
-    linear_drag_coeff_ = linear_drag_coeff;
+    linear_drag_coeff_ = diag(linear_drag_coeff);
   }
 
   void set_angular_drag_coeff(float data[3]) {
