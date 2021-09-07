@@ -5,8 +5,8 @@
 class PidCascadedController {
 
 private:
-  YAML::Node controller_yaml =
-      YAML::LoadFile("controller/pid_cascaded/controller_parameters.yaml");
+  YAML::Node controller_yaml = YAML::LoadFile(
+      "quadcopter_sim/controller/pid_cascaded/controller_parameters.yaml");
 
 protected:
   // Altitude controller parameters

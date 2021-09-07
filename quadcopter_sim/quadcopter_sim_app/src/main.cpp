@@ -1,3 +1,5 @@
+#include "motor_mixing.h"
+#include "pid_cascaded.h"
 #include "plot.h"
 #include "quadcopter.h"
 #include "simulator.h"
@@ -7,6 +9,8 @@ int main() {
 
   Quadcopter quad;
   Simulator sim;
+  PidCascadedController controller;
+
   sim.set_parameters("quadcopter_sim/quadcopter_sim_app/parameters/"
                      "simulation_parameters.yaml");
 
@@ -24,16 +28,30 @@ int main() {
     // Get system state
     quad.sensor_read();
 
+    // Outer loop
+    const float thrust_command =
+        controller.altitude_controller(quad, 5, sim.dt());
+
+    const float attitude_command =
+        controller.horizontal_controller(quad, 2, sim.dt());
+
+    // Inner loop
+    // const float torque_command =
+    //     controller.attitude_controller(quad, attitude_command, sim.dt());
+
+    // test altitude controller first
+    const float torque_command = 0;
+
+    // Convert thrust, torque to motor speeds
+    motor_mixing(motor_commands, thrust_command, torque_command,
+                 quad.motor[0].k_f(), quad.frame.arm_length());
+
     // Dynamics function that accepts motor commands instead of thrusts
     quad.dynamics(motor_commands, sim.dt());
 
     // quad.dynamics(ff_thrust, torque_command);
     quad.euler_step(sim.dt());
 
-    // std::cout << "Altitude:" << quad.position()(2) << '\n';
-    // std::cout << "Quadcopter acceleration:" << quad.frame.acceleration()(0)
-    //           << '\t' << quad.frame.acceleration()(1) << '\t'
-    //           << quad.frame.acceleration()(2) << '\n';
     std::cout << std::endl;
 
     if (plot_flags::plot_enable) {
