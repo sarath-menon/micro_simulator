@@ -1,6 +1,6 @@
 #include "quadcopter.h"
 
-void Quadcopter::motor_speed_to_thrust_torque(float motor_commands[4]) {
+void Quadcopter::motor_speed_to_thrust_torque(const float motor_commands[4]) {
 
   // Get thrust corresponding to motor speed
   for (int i = 0; i < 4; i++) {
