@@ -2,6 +2,7 @@
 
 add_executable(quad_3d
 src/main.cpp
+#src/display_parameters_demo.cpp
 )
 
 

@@ -2,9 +2,10 @@
 #include "motor_propeller_pair.h"
 #include "quadcopter_frame.h"
 #include "rigidbody.h"
+#include <math.h>
 #include <matrix/math.hpp>
+#include <random>
 #include <yaml-cpp/yaml.h>
-
 /// Represents the quadcopter
 class Quadcopter : public RigidBody {
 
@@ -38,7 +39,7 @@ public:
   // Quadcopter dynamics
   void dynamics(float motor_commands[4]);
   // Quadcopter dynamics
-  void euler_step();
+  void euler_step(const float dt);
 
 public:
   /// Getter function
