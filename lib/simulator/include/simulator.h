@@ -15,7 +15,7 @@ private:
 
 public:
   // Loads the quadcopter properties from the yaml file
-  void set_parameter(std::string path);
+  void set_parameters(std::string path);
 
 public:
   /// Getter function

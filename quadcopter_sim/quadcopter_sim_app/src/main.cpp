@@ -7,6 +7,8 @@ int main() {
 
   Quadcopter quad;
   Simulator sim;
+  sim.set_parameters("quadcopter_sim/quadcopter_sim_app/parameters/"
+                     "simulation_parameters.yaml");
 
   quad.set_parameters();
   quad.set_initial_conditions();
@@ -18,14 +20,24 @@ int main() {
   // Start Simulation
   ///////////////////////////////////////////////////////////////////////////////////////////
 
-  // Get system state
-  quad.sensor_read();
+  for (int i = 0; i < sim.euler_steps(); i++) {
+    // Get system state
+    quad.sensor_read();
 
-  // Dynamics function that accepts motor commands instead of thrusts
-  quad.dynamics(motor_commands);
+    // Dynamics function that accepts motor commands instead of thrusts
+    quad.dynamics(motor_commands);
 
-  // quad.dynamics(ff_thrust, torque_command);
-  quad.euler_step(sim.dt());
+    // quad.dynamics(ff_thrust, torque_command);
+    quad.euler_step(sim.dt());
+
+    std::cout << "Altitude:" << quad.position()(2) << '\n';
+
+    if (plot_flags::plot_enable) {
+      // Set variables for plotting
+      plot_var::z_plot[i] = quad.position()(2);
+      plot_var::t_plot[i] = i * sim.dt();
+    }
+  }
 
   if (plot_flags::plot_enable) {
     // Initialize visualizer

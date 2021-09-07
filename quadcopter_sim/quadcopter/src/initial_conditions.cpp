@@ -43,4 +43,8 @@ void Quadcopter::set_initial_conditions() {
   intial_angular_velocity(2) = yaml_file["omega_z"].as<float>();
 
   frame.set_angular_velocity(intial_angular_velocity);
+
+  // Set the frame's position and orientation for quadcopter
+  set_position(frame.position());
+  set_orientation(frame.orientation());
 }

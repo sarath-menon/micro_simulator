@@ -1,10 +1,9 @@
 #include "simulator.h"
 
-void Simulator::set_parameter(std::string path) {
+void Simulator::set_parameters(std::string path) {
 
   // Load simulation properties from yaml file
-  YAML::Node yaml_file =
-      YAML::LoadFile("project/parameters/simulation_parameters.yaml");
+  YAML::Node yaml_file = YAML::LoadFile(path);
 
   dt_ = yaml_file["dt"].as<float>();
 

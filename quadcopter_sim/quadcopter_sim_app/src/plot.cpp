@@ -1,34 +1,6 @@
 
 #include "plot.h"
 
-// Initialize shared plotting varibles
-namespace plot_var {
-const int euler_timesteps = 500;
-
-// Variables to be plotted
-float x_plot[euler_timesteps];
-float y_plot[euler_timesteps];
-float z_plot[euler_timesteps];
-
-float roll_angle_plot[euler_timesteps];
-float pitch_angle_plot[euler_timesteps];
-float yaw_angle_plot[euler_timesteps];
-
-float thrust_plot[euler_timesteps];
-float torque_roll_plot[euler_timesteps];
-float torque_pitch_plot[euler_timesteps];
-float torque_yaw_plot[euler_timesteps];
-
-float t_plot[euler_timesteps];
-
-// Plot axes limits
-constexpr static int x_min = 0;
-constexpr static int x_max = 5;
-constexpr static int y_min = 0;
-constexpr static int y_max = 20;
-
-} // namespace plot_var
-
 void MyApp::update() {
 
   // App logic and/or ImGui code goes here

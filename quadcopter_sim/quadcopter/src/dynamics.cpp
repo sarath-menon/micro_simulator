@@ -7,4 +7,7 @@ void Quadcopter::dynamics(const float motor_commands[4]) {
   motor_speed_to_thrust_torque(motor_commands);
   // Dynamics of the quadcopter frame
   frame.dynamics(body_thrust, body_torques);
+
+  set_position(frame.position());
+  set_orientation(frame.orientation());
 }
