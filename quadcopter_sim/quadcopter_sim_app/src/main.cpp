@@ -25,7 +25,7 @@ int main() {
     quad.sensor_read();
 
     // Dynamics function that accepts motor commands instead of thrusts
-    quad.dynamics(motor_commands);
+    quad.dynamics(motor_commands, sim.dt());
 
     // quad.dynamics(ff_thrust, torque_command);
     quad.euler_step(sim.dt());

@@ -52,15 +52,12 @@ private:
   // Acceleration due to gravity
   const matrix::Vector3f gravity_acc = matrix::Vector3f(0, 0, 9.81);
 
-  // Declare dt for now
-  constexpr static float dt = 0.01;
-
 public:
   /// Quadcopter Dynamics
   void dynamics(const matrix::Vector3<float> body_thrust,
-                const matrix::Vector3<float> body_torque);
+                const matrix::Vector3<float> body_torque, const float dt);
 
-  void euler_step();
+  void euler_step(const float dt);
 
 public:
   /// Getter function

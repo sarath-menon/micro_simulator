@@ -37,7 +37,7 @@ public:
   // // COnvert motor speed to thrust and torque exerted in quadcopter frame
   void motor_speed_to_thrust_torque(const float motor_commands[4]);
   // Quadcopter dynamics
-  void dynamics(const float motor_commands[4]);
+  void dynamics(const float motor_commands[4], const float dt);
   // Quadcopter dynamics
   void euler_step(const float dt);
 
