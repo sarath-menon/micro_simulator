@@ -31,21 +31,15 @@ protected:
   float thrust_min_ = 0;
 
   // Relation btw square of motor speed and motor thrust
-  constexpr static float k_f_ = 0.0000000611;
+  float k_f_ = 0;
   // Relation btw  motor thrust and drag torque
-  constexpr static float k_t_ = 0.0000000611;
+  float k_t_ = 0;
 
 public:
   /// Arm Dynamics
   void dynamics(const float commanded_motor_speed);
 
-  constexpr static float motor_speed_to_thrust_map(const float motor_command) {
-
-    float commanded_thrust = motor_command * k_f_;
-
-    // For now, let actual thrust = commanded thryst
-    return commanded_thrust;
-  }
+  float motor_speed_to_thrust_map(const float motor_command);
 
 public:
   /// Getter function
@@ -63,19 +57,24 @@ public:
   /// Getter function
   float thrust_min() const { return thrust_min_; }
   /// Getter function
-  constexpr static float k_f() { return k_f_; }
+  float k_f() { return k_f_; }
   /// Getter function
-  constexpr static float k_t() { return k_t_; }
+  float k_t() { return k_t_; }
 
 public:
   /// Setter function
   void set_time_constant(float time_constant) {
     time_constant_ = time_constant;
   }
-
   /// Setter function
   void set_thrust_max(float thrust_max) { thrust_max_ = thrust_max; }
 
   /// Setter function
   void set_thrust_min(float thrust_min) { thrust_min_ = thrust_min; }
+
+  /// Setter function
+  void set_k_f(float k_f) { k_f_ = k_f; }
+
+  /// Setter function
+  void set_k_t(float k_t) { k_t_ = k_t; }
 };

@@ -10,13 +10,10 @@ void MotorPropellerPair::dynamics(const float commanded_motor_speed) {
       (1 / time_constant_) * (commanded_thrust - actual_thrust_);
 }
 
-// Setter functions
+float MotorPropellerPair::motor_speed_to_thrust_map(const float motor_command) {
 
-// constexpr float
-// MotorPropellerPair::motor_speed_to_thrust_map(const float motor_command) {
+  float commanded_thrust = motor_command * k_f_;
 
-//   float commanded_thrust = motor_command * k_f_;
-
-//   // For now, let actual thrust = commanded thryst
-//   return commanded_thrust;
-// }
+  // For now, let actual thrust = commanded thryst
+  return commanded_thrust;
+}
