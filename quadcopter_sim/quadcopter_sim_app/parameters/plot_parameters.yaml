@@ -1,0 +1,28 @@
+# Plot Parameters:
+
+# To enable plotting
+plot_flag: true
+
+# Translation
+x_flag: true
+
+y_flag: true
+
+z_flag: true
+
+# Rotation
+roll_angle_flag: true
+
+pitch_angle_flag: true
+
+yaw_angle_flag: true
+
+# Body thrust
+body_thrust_flag: false
+
+# Body torques
+body_roll_torque_flag: false
+
+body_pitch_torque_flag: false
+
+body_yaw_torque_flag: false

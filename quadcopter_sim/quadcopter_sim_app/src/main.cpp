@@ -1,3 +1,4 @@
+#include "plot.h"
 #include "quadcopter.h"
 #include "simulator.h"
 #include <iostream>
@@ -6,6 +7,7 @@ int main() {
 
   Quadcopter quad;
   Simulator sim;
+
   quad.set_parameters();
   quad.set_initial_conditions();
 
@@ -24,6 +26,12 @@ int main() {
 
   // quad.dynamics(ff_thrust, torque_command);
   quad.euler_step(sim.dt());
+
+  if (plot_flag) {
+    // Initialize visualizer
+    MyApp app;
+    app.run();
+  }
 
   return 0;
 }
