@@ -13,12 +13,10 @@ protected:
   // Geometrical Properties ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
   /// Linear drag coefficient
-  // matrix::Vector3f linear_drag_coeff_;
-
   matrix::Matrix3f linear_drag_coeff_;
 
   // /// Angular drag coefficient
-  matrix::Vector3f angular_drag_coeff_;
+  matrix::Matrix3f angular_drag_coeff_;
 
   /// Distance from the quadcopter's center of mass to the propellor
   float moment_arm_ = 0;
@@ -68,9 +66,9 @@ public:
   float linear_drag_coeff_z() const { return linear_drag_coeff_(2, 2); }
 
   /// Getter function
-  float angular_drag_coeff_x() const { return angular_drag_coeff_(0); }
-  float angular_drag_coeff_y() const { return angular_drag_coeff_(1); }
-  float angular_drag_coeff_z() const { return angular_drag_coeff_(2); }
+  float angular_drag_coeff_x() const { return angular_drag_coeff_(0, 0); }
+  float angular_drag_coeff_y() const { return angular_drag_coeff_(0, 0); }
+  float angular_drag_coeff_z() const { return angular_drag_coeff_(0, 0); }
 
   /// Getter function
   float moment_arm() const { return moment_arm_; }
@@ -94,7 +92,7 @@ public:
 
   void set_angular_drag_coeff(float data[3]) {
     matrix::Vector3f angular_drag_coeff(data);
-    angular_drag_coeff_ = angular_drag_coeff;
+    angular_drag_coeff_ = diag(angular_drag_coeff);
   }
 
   void set_moment_arm(float moment_arm) { moment_arm_ = moment_arm; }
