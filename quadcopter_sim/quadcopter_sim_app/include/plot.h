@@ -7,12 +7,24 @@
 using namespace mahi::gui;
 using namespace mahi::util;
 
+// Inherit from Application
+class MyApp : public Application {
+public:
+  // 640x480 px window
+  MyApp() : Application(1080, 720, "My App") {}
+  // Override update (called once per frame)
+
+  void update() override;
+};
+
+// Initialize shared plotting flags
+namespace plot_flags {
 // Load yaml file containing plotting properties
 inline YAML::Node plot_yaml = YAML::LoadFile(
     "quadcopter_sim/quadcopter_sim_app/parameters/plot_parameters.yaml");
 
 // Load properties from yaml file
-const bool plot_flag = plot_yaml["plot_flag"].as<bool>();
+const bool plot_enable = plot_yaml["plot_enable"].as<bool>();
 
 const bool x_flag = plot_yaml["x_flag"].as<bool>();
 const bool y_flag = plot_yaml["y_flag"].as<bool>();
@@ -30,12 +42,4 @@ const bool body_pitch_torque_flag =
     plot_yaml["body_pitch_torque_flag"].as<bool>();
 const bool body_yaw_torque_flag = plot_yaml["body_yaw_torque_flag"].as<bool>();
 
-// Inherit from Application
-class MyApp : public Application {
-public:
-  // 640x480 px window
-  MyApp() : Application(1080, 720, "My App") {}
-  // Override update (called once per frame)
-
-  void update() override;
-};
+} // namespace plot_flags

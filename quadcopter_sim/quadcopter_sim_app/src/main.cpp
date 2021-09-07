@@ -27,7 +27,7 @@ int main() {
   // quad.dynamics(ff_thrust, torque_command);
   quad.euler_step(sim.dt());
 
-  if (plot_flag) {
+  if (plot_flags::plot_enable) {
     // Initialize visualizer
     MyApp app;
     app.run();

@@ -1,9 +1,6 @@
 
 #include "plot.h"
 
-// using namespace mahi::gui;
-// using namespace mahi::util;
-
 // Initialize shared plotting varibles
 namespace plot_var {
 const int euler_timesteps = 500;
@@ -41,7 +38,7 @@ void MyApp::update() {
   ImPlot::PushColormap(ImPlotColormap_Pastel);
 
   // Altitude plot
-  if (z_flag) {
+  if (plot_flags::z_flag) {
     ImPlot::SetNextPlotLimits(plot_var::x_min, plot_var::x_max, 0, 8);
     if (ImPlot::BeginPlot("Altitude vs Time", "time", "altitude [m]",
                           ImVec2(-1, 200))) {
@@ -51,7 +48,7 @@ void MyApp::update() {
     }
   }
 
-  if (x_flag) {
+  if (plot_flags::x_flag) {
     // Translation plot
     ImPlot::SetNextPlotLimits(plot_var::x_min, plot_var::x_max, 0, 5);
     if (ImPlot::BeginPlot("Vertical vs Time", "time", "x distance [m]",
@@ -63,7 +60,7 @@ void MyApp::update() {
   }
 
   // Thrust input plot
-  if (body_thrust_flag) {
+  if (plot_flags::body_thrust_flag) {
     ImPlot::SetNextPlotLimits(plot_var::x_min, plot_var::x_max, 0, 25);
     ImPlot::PushColormap(ImPlotColormap_Pastel);
     if (ImPlot::BeginPlot("Thrust input vs Time", "time", "thrust input [N/kg]",
@@ -75,7 +72,7 @@ void MyApp::update() {
   }
 
   // Torque input plot
-  if (body_roll_torque_flag) {
+  if (plot_flags::body_roll_torque_flag) {
     ImPlot::SetNextPlotLimits(plot_var::x_min, plot_var::x_max, -5, 5);
     ImPlot::PushColormap(ImPlotColormap_Pastel);
     if (ImPlot::BeginPlot("Torque input vs Time", "time",
@@ -87,7 +84,7 @@ void MyApp::update() {
   }
 
   // Roll angle plot
-  if (roll_angle_flag) {
+  if (plot_flags::roll_angle_flag) {
     ImPlot::SetNextPlotLimits(plot_var::x_min, plot_var::x_max, -50, 50);
     ImPlot::PushColormap(ImPlotColormap_Pastel);
     if (ImPlot::BeginPlot("Roll angle vs Time", "time", "roll angle [deg]",
