@@ -26,22 +26,21 @@ private:
   float propeller_thrusts[4] = {0, 0, 0, 0};
 
   // Net thrust acting on the quadcopter
-  matrix::Vector3<float> body_thrust;
+  matrix::Vector3f body_thrust;
   // Net torques acting on the quadcopter
-  matrix::Vector3<float> body_torques;
+  matrix::Vector3f body_torques;
 
   // Maximum thrust can be produced by the quadcopter
-  float thrust_max_ = motor[0].thrust_max() * 4;
+  float thrust_max_ = 0;
 
   // Maximum thrust can be produced by the quadcopter
-  float thrust_min_ = motor[0].thrust_min() * 4;
+  float thrust_min_ = 0;
 
   // Maximum torque that can be produced by the motors
-  const float roll_torque_max_ =
-      (motor[1].thrust_max() - motor[1].thrust_min()) * frame.arm_length();
+  float roll_torque_max_ = 0;
 
-  const float pitch_torque_max_ =
-      (motor[0].thrust_max() - motor[0].thrust_min()) * frame.arm_length();
+  float pitch_torque_max_ = 0;
+
   // Public function
 public:
   /// Loads the quadcopter properties from the yaml file

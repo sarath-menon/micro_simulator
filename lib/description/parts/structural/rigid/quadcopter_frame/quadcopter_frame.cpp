@@ -32,8 +32,12 @@ void QuadcopterFrame::dynamics(const matrix::Vector3<float> body_thrust,
        (angular_drag_coeff_ * angular_velocity_));
 
   // Plot variables for debugging
-  std::cout << "Acceleration:" << acceleration_(0) << '\t' << acceleration_(1)
-            << '\t' << acceleration_(2) << '\n';
+  // std::cout << "Acceleration:" << acceleration_(0) << '\t' <<
+  // acceleration_(1)
+  //           << '\t' << acceleration_(2) << '\n';
+
+  // std::cout << "Body thrust:" << body_thrust(0) << '\t' << body_thrust(1)
+  //           << '\t' << body_thrust(2) << '\n';
 
   // std::cout << "Drag term:" << diag(linear_drag_coeff_) << '\n';
 }

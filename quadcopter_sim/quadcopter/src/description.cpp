@@ -52,6 +52,9 @@ void Quadcopter::set_parameters() {
     motor[i].set_thrust_min(yaml_file["thrust_min"].as<float>());
 
     motor[i].set_time_constant(yaml_file["arm_length"].as<float>());
+
+    motor[i].set_k_f(yaml_file["k_f"].as<float>());
+    motor[i].set_k_t(yaml_file["k_t"].as<float>());
   }
 
   ///////////////////////////////////////////////////////////////////////////////////////////
@@ -62,4 +65,22 @@ void Quadcopter::set_parameters() {
   set_roll_max(yaml_file["roll_max"].as<float>());
   // Set maximum roll and pitch angle
   set_pitch_max(yaml_file["pitch_max"].as<float>());
+
+  //// Set initial body thrust to zero
+  body_thrust(0) = 0;
+  body_thrust(1) = 0;
+  body_thrust(2) = 0;
+
+  // Maximum thrust can be produced by the quadcopter
+  thrust_max_ = motor[0].thrust_max() * 4;
+
+  // Maximum thrust can be produced by the quadcopter
+  thrust_min_ = motor[0].thrust_min() * 4;
+
+  // Maximum torque that can be produced by the motors
+  roll_torque_max_ =
+      (motor[1].thrust_max() - motor[1].thrust_min()) * frame.arm_length();
+
+  pitch_torque_max_ =
+      (motor[0].thrust_max() - motor[0].thrust_min()) * frame.arm_length();
 }

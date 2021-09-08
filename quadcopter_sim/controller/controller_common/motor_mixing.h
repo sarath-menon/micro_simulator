@@ -7,11 +7,11 @@ const float motor_min = 1.75;
 const float motor_max = 6.25;
 
 void motor_mixing(float motor_commands[4], const float thrust_command,
-                  const float torque_command, const float k_f,
+                  const float torque_commands[3], const float k_f,
                   const float arm_length) {
 
-  float f2 = (thrust_command / 4) + (torque_command / (2 * arm_length));
-  float f4 = (thrust_command / 4) - (torque_command / (2 * arm_length));
+  float f2 = (thrust_command / 4) + (torque_commands[0] / (2 * arm_length));
+  float f4 = (thrust_command / 4) - (torque_commands[0] / (2 * arm_length));
 
   f2 = limit(f2, motor_max, motor_min);
   f4 = limit(f4, motor_max, motor_min);
@@ -29,12 +29,21 @@ void motor_mixing(float motor_commands[4], const float thrust_command,
 
   // std::cout << "Actual Motor 1 command " << motor_commands[0] << std::endl;
 
-  //   std::cout << "Controller: f1:" << f1 << "\tf2:" << f2 << "\tf3:" << f3
-  //             << "\tf4:" << f4 << std::endl;
+  // std::cout << "Controller: f1:" << f1 << "\tf2:" << f2 << "\tf3:" << f3
+  //           << "\tf4:" << f4 << std::endl;
   //   std::cout << "Net thrust and torque before  motor mixing:" <<
   //   thrust_command
   //             << '\t' << torque_command << std::endl;
   //   std::cout << "Net thrust and torque after motor mixing:" << f1 + f2 + f3
   //   + f4
   //             << '\t' << (f2 - f4) * arm_length << std::endl;
+
+  std::cout << "Thrust command:" << thrust_command << '\n';
+
+  // std::cout << "Torque commands:" << torque_commands[0] << '\t'
+  //           << torque_commands[1] << '\t' << torque_commands[2] << '\n';
+
+  // std::cout << "Motor commands:" << motor_commands[0] << '\t'
+  //           << motor_commands[1] << '\t' << motor_commands[2] << '\t'
+  //           << motor_commands[3] << '\n';
 }

@@ -40,10 +40,10 @@ int main() {
     //     controller.attitude_controller(quad, attitude_command, sim.dt());
 
     // test altitude controller first
-    const float torque_command = 0;
+    const float torque_commands[3] = {0, 0, 0};
 
     // Convert thrust, torque to motor speeds
-    motor_mixing(motor_commands, thrust_command, torque_command,
+    motor_mixing(motor_commands, thrust_command, torque_commands,
                  quad.motor[0].k_f(), quad.frame.arm_length());
 
     // Dynamics function that accepts motor commands instead of thrusts
@@ -52,7 +52,11 @@ int main() {
     // quad.dynamics(ff_thrust, torque_command);
     quad.euler_step(sim.dt());
 
-    std::cout << std::endl;
+    // Plot variables for debugging
+    //////////////////////////////////////////////////////////////////////////////////
+
+    std::cout << '\n';
+    //////////////////////////////////////////////////////////////////////////////////
 
     if (plot_flags::plot_enable) {
       // Set variables for plotting
