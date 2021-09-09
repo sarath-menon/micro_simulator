@@ -5,9 +5,6 @@
 #include <math_helper.h>
 #include <matrix/math.hpp>
 
-const float motor_min = 1.75;
-const float motor_max = 6.25;
-
 void motor_mixing(const Quadcopter &quad, float motor_commands[4],
                   const float thrust_command, const float torque_commands[3],
                   const float k_f, const float arm_length) {

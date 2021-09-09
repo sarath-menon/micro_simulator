@@ -39,11 +39,11 @@ int main() {
     const float attitude_command =
         controller.horizontal_controller(quad, 2, sim.dt());
 
-    torque_commands[0] =
-        controller.attitude_controller(quad, attitude_command, sim.dt());
+    // torque_commands[0] =
+    //     controller.attitude_controller(quad, attitude_command, sim.dt());
 
     // // test altitude controller first
-    // const float torque_commands[3] = {0, 0, 0};
+    const float torque_commands[3] = {0, 0, 0};
 
     // Convert thrust, torque to motor speeds
     motor_mixing(quad, motor_commands, thrust_command, torque_commands,
