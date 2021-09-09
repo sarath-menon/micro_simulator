@@ -66,11 +66,6 @@ void Quadcopter::set_parameters() {
   // Set maximum roll and pitch angle
   set_pitch_max(yaml_file["pitch_max"].as<float>());
 
-  //// Set initial body thrust to zero
-  body_thrust(0) = 0;
-  body_thrust(1) = 0;
-  body_thrust(2) = 0;
-
   // Maximum thrust can be produced by the quadcopter
   thrust_max_ = motor[0].thrust_max() * 4;
 
@@ -83,4 +78,28 @@ void Quadcopter::set_parameters() {
 
   pitch_torque_max_ =
       (motor[0].thrust_max() - motor[0].thrust_min()) * frame.arm_length();
+
+  // Thrust allocation matrix
+  const float l_inv = 1 / frame.arm_length();
+  const float k_inv = 1 / motor[0].k_t();
+
+  mixer_matrix_(0, 0) = 0.25;
+  mixer_matrix_(0, 1) = 0;
+  mixer_matrix_(0, 2) = 0.5 * l_inv;
+  mixer_matrix_(0, 3) = 0.25 * k_inv;
+
+  mixer_matrix_(1, 0) = 0.25;
+  mixer_matrix_(1, 1) = 0.5 * l_inv;
+  mixer_matrix_(1, 2) = 0;
+  mixer_matrix_(1, 3) = -0.25 * k_inv;
+
+  mixer_matrix_(2, 0) = 0.25;
+  mixer_matrix_(2, 1) = 0;
+  mixer_matrix_(2, 2) = -0.5 * l_inv;
+  mixer_matrix_(2, 3) = 0.25 * k_inv;
+
+  mixer_matrix_(3, 0) = 0.25;
+  mixer_matrix_(3, 1) = -0.5 * l_inv;
+  mixer_matrix_(3, 2) = 0;
+  mixer_matrix_(3, 3) = -0.25 * k_inv;
 }

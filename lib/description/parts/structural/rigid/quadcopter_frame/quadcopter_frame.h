@@ -29,6 +29,9 @@ protected:
   /// velocity of rigid body
   matrix::Vector3<float> velocity_;
 
+  // Absolute velocity
+  matrix::Vector3<float> abs_velocity;
+
   /// velocity of rigid body
   matrix::Vector3<float> acceleration_;
 

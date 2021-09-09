@@ -39,7 +39,9 @@ void QuadcopterFrame::dynamics(const matrix::Vector3<float> body_thrust,
   // std::cout << "Body thrust:" << body_thrust(0) << '\t' << body_thrust(1)
   //           << '\t' << body_thrust(2) << '\n';
 
-  // std::cout << "Drag term:" << diag(linear_drag_coeff_) << '\n';
+  const matrix::Vector3<float> air_drag = linear_drag_coeff_ * velocity_;
+  std::cout << "Drag term:" << air_drag(0) << '\t' << air_drag(1) << '\t'
+            << air_drag(2) << '\t' << '\n';
 }
 
 /// Represents the quadcopter

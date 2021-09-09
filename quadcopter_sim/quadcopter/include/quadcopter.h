@@ -38,8 +38,10 @@ private:
 
   // Maximum torque that can be produced by the motors
   float roll_torque_max_ = 0;
-
   float pitch_torque_max_ = 0;
+
+  // Mixer matrix
+  matrix::SquareMatrix<float, 4> mixer_matrix_;
 
   // Public function
 public:
@@ -69,6 +71,10 @@ public:
   const float roll_torque_max() const { return roll_torque_max_; }
   /// Getter function
   const float pitch_torque_max() const { return pitch_torque_max_; }
+  /// Getter function
+  const matrix::SquareMatrix<float, 4> mixer_matrix() const {
+    return mixer_matrix_;
+  }
 
 public:
   /// Setter function

@@ -15,7 +15,7 @@ float PidCascadedController::altitude_controller(const Quadcopter &quad,
   thrust_command =
       limit(ff_thrust + thrust_command, quad.thrust_max(), quad.thrust_min());
 
-  // std::cout << "Altitude error:" << altitude_error << '\n';
+  std::cout << "Altitude error:" << altitude_error << '\n';
 
   return thrust_command;
 };

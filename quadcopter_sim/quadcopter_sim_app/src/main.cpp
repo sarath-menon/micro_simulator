@@ -19,12 +19,16 @@ int main() {
 
   // Declare for now
   float motor_commands[4] = {0, 0, 0, 0};
+  float torque_commands[3] = {0, 0, 0};
 
   ///////////////////////////////////////////////////////////////////////////////////////////
   // Start Simulation
   ///////////////////////////////////////////////////////////////////////////////////////////
 
   for (int i = 0; i < sim.euler_steps(); i++) {
+    // Print simulation timestep
+    std::cout << "Timestep:" << i + 1 << '\n';
+
     // Get system state
     quad.sensor_read();
 
@@ -35,15 +39,14 @@ int main() {
     const float attitude_command =
         controller.horizontal_controller(quad, 2, sim.dt());
 
-    // Inner loop
-    // const float torque_command =
-    //     controller.attitude_controller(quad, attitude_command, sim.dt());
+    torque_commands[0] =
+        controller.attitude_controller(quad, attitude_command, sim.dt());
 
-    // test altitude controller first
-    const float torque_commands[3] = {0, 0, 0};
+    // // test altitude controller first
+    // const float torque_commands[3] = {0, 0, 0};
 
     // Convert thrust, torque to motor speeds
-    motor_mixing(motor_commands, thrust_command, torque_commands,
+    motor_mixing(quad, motor_commands, thrust_command, torque_commands,
                  quad.motor[0].k_f(), quad.frame.arm_length());
 
     // Dynamics function that accepts motor commands instead of thrusts
