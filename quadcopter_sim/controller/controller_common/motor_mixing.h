@@ -27,15 +27,15 @@ void motor_mixing(const Quadcopter &quad, float motor_commands[4],
 
   // std::cout << "Actual Motor 1 command " << motor_commands[0] << std::endl;
 
-  std::cout << "Propeller thrusts in Controller: f1:" << motor_thrusts(0)
-            << "\tf2:" << motor_thrusts(1) << "\tf3:" << motor_thrusts(2)
-            << "\tf4:" << motor_thrusts(3) << std::endl;
+  // std::cout << "Propeller thrusts in Controller: f1:" << motor_thrusts(0)
+  //           << "\tf2:" << motor_thrusts(1) << "\tf3:" << motor_thrusts(2)
+  //           << "\tf4:" << motor_thrusts(3) << std::endl;
 
-  std::cout << "Thrust command before  motor mixing:" << thrust_command << '\n';
-  std::cout << "Thrust command after motor mixing:"
-            << motor_thrusts(0) + motor_thrusts(1) + motor_thrusts(2) +
-                   motor_thrusts(3)
-            << '\n';
+  // std::cout << "Thrust command before  motor mixing:" << thrust_command <<
+  // '\n'; std::cout << "Thrust command after motor mixing:"
+  //           << motor_thrusts(0) + motor_thrusts(1) + motor_thrusts(2) +
+  //                  motor_thrusts(3)
+  //           << '\n';
 
   // std::cout << "Torque commands before  motor mixing:" << torque_commands[0]
   //           << '\t' << torque_commands[1] << '\t' << torque_commands[2] <<
