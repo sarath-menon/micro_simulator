@@ -38,6 +38,6 @@ public:
                             const float dt);
   float horizontal_controller(const Quadcopter &quad,
                               const float horizontal_target, const float dt);
-  float attitude_controller(const Quadcopter &quad, const float attitude_target,
-                            const float dt);
+  float roll_angle_controller(const Quadcopter &quad,
+                              const float attitude_target, const float dt);
 };

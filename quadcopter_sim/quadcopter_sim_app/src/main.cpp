@@ -37,10 +37,10 @@ int main() {
         controller.altitude_controller(quad, 5, sim.dt());
 
     const float attitude_command =
-        controller.horizontal_controller(quad, 2, sim.dt());
+        controller.horizontal_controller(quad, 4, sim.dt());
 
     torque_commands[0] =
-        controller.attitude_controller(quad, attitude_command, sim.dt());
+        controller.roll_angle_controller(quad, attitude_command, sim.dt());
 
     // std::cout << "Roll torque command:" << torque_commands[0] << '\n';
     // // // test altitude controller first

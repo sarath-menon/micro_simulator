@@ -35,10 +35,10 @@ float PidCascadedController::horizontal_controller(
   return attitude_command;
 };
 
-float PidCascadedController::attitude_controller(const Quadcopter &quad,
-                                                 const float attitude_target,
-                                                 const float dt) {
-  const float angle_error = attitude_target - quad.frame.arm_length();
+float PidCascadedController::roll_angle_controller(const Quadcopter &quad,
+                                                   const float attitude_target,
+                                                   const float dt) {
+  const float angle_error = attitude_target - quad.frame.euler_orientation()(0);
 
   float torque_command = attitude_pid(angle_error, k_p__b, k_i__b, k_d__b, dt);
 
