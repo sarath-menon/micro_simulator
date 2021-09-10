@@ -59,6 +59,10 @@ int main() {
     // Plot variables for debugging
     //////////////////////////////////////////////////////////////////////////////////
 
+    std::cout << "Euler angle:" << quad.frame.euler_orientation()(0) << '\t'
+              << quad.frame.euler_orientation()(1) << '\t'
+              << quad.frame.euler_orientation()(2) << '\n';
+
     std::cout << '\n';
     //////////////////////////////////////////////////////////////////////////////////
 
@@ -68,10 +72,9 @@ int main() {
       plot_var::y_plot[i] = quad.position()(1);
       plot_var::z_plot[i] = quad.position()(2);
 
-      Eulerf euler_orientation(quad.orientation());
-      plot_var::roll_angle_plot[i] = euler_orientation(0);
-      plot_var::pitch_angle_plot[i] = euler_orientation(1);
-      plot_var::yaw_angle_plot[i] = euler_orientation(2);
+      plot_var::roll_angle_plot[i] = quad.frame.euler_orientation()(0);
+      plot_var::pitch_angle_plot[i] = quad.frame.euler_orientation()(1);
+      plot_var::yaw_angle_plot[i] = quad.frame.euler_orientation()(2);
 
       plot_var::t_plot[i] = i * sim.dt();
     }

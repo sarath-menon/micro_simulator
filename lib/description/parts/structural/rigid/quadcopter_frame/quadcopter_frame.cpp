@@ -60,6 +60,9 @@ void QuadcopterFrame::euler_step(const float dt) {
 
   angular_velocity_ = angular_velocity_ + angular_acceleration_ * dt;
 
+  // Store update euler angle representation
+  set_euler_orientation();
+
   // Plot variables for debugging
   std::cout << "Position:" << position_(0) << '\t' << position_(1) << '\t'
             << position_(2) << '\n';

@@ -35,8 +35,8 @@ protected:
   /// velocity of rigid body
   matrix::Vector3<float> acceleration_;
 
-  // /// 2nd Time derivative of rigid body position
-  // matrix::Vector3<float> position_ddot_;
+  /// Orientation as Z-Y-X Euler angle
+  matrix::Eulerf euler_orientation_;
 
   // /// 2nd Time derivative of rigid body orientation
   // matrix::Vector3<float> orientation_ddot_;
@@ -76,6 +76,9 @@ public:
   /// Getter function
   float arm_length() const { return arm_length_; }
 
+  /// Getter function
+  matrix::Eulerf euler_orientation() const { return euler_orientation_; }
+
   // /// Getter function
   // matrix::Vector3<float> position_ddot() const { return position_ddot_; }
 
@@ -103,5 +106,11 @@ public:
   void set_inertia_matrix_inverse(
       matrix::SquareMatrix<float, 3> inertia_matrix_inverse) {
     inertia_matrix_inv_ = inertia_matrix_inverse;
+  }
+
+  void set_euler_orientation() {
+
+    matrix::Eulerf euler_orientation(orientation_);
+    euler_orientation_ = euler_orientation * (180 / M_PI);
   }
 };
