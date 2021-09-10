@@ -62,6 +62,9 @@ public:
 
   void euler_step(const float dt);
 
+  // Rotation only simulation for tuning attitude controller
+  void attitude_tune_euler_step(const float dt);
+
 public:
   /// Getter function
   float linear_drag_coeff_x() const { return linear_drag_coeff_(0, 0); }

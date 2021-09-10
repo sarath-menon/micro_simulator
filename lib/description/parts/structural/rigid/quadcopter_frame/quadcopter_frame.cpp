@@ -20,18 +20,12 @@ void QuadcopterFrame::dynamics(const matrix::Vector3<float> body_thrust,
   // Angular velocity
   orientation_dot_ = matrix::Quatf::expq(0.5f * dt * angular_velocity_);
 
-  // // Angular acceleration
-  // angular_acceleration_ =
-  //     inertia_matrix_inv_ *
-  //     (body_torques -
-  //      angular_velocity_.cross(inertia_matrix_ * angular_velocity_) -
-  //      (angular_drag_coeff_ * angular_velocity_));
-
   // Angular acceleration
   angular_acceleration_ =
       inertia_matrix_inverse_ *
       (body_torques -
-       angular_velocity_.cross(inertia_matrix_ * angular_velocity_));
+       angular_velocity_.cross(inertia_matrix_ * angular_velocity_) -
+       (angular_drag_coeff_ * angular_velocity_));
 
   // Plot variables for debugging
   // std::cout << "Acceleration:" << acceleration_(0) <<
@@ -42,23 +36,12 @@ void QuadcopterFrame::dynamics(const matrix::Vector3<float> body_thrust,
             << angular_acceleration_(1) << '\t' << angular_acceleration_(2)
             << '\n';
 
-  // std::cout << "Angular acceleration debug term:"
-  //           << angular_velocity_.cross(inertia_matrix_ *
-  //           angular_velocity_)(0)
-  //           << '\t'
-  //           << angular_velocity_.cross(inertia_matrix_ *
-  //           angular_velocity_)(1)
-  //           << '\t'
-  //           << angular_velocity_.cross(inertia_matrix_ *
-  //           angular_velocity_)(2)
-  //           << '\n';
-
-  const matrix::Vector3<float> air_drag = linear_drag_coeff_ * velocity_;
+  // const matrix::Vector3<float> air_drag = linear_drag_coeff_ * velocity_;
   // std::cout << "Drag term:" << air_drag(0) << '\t' << air_drag(1) << '\t'
   //           << air_drag(2) << '\t' << '\n';
 }
 
-/// Represents the quadcopter
+///
 void QuadcopterFrame::euler_step(const float dt) {
 
   // Translation
@@ -80,6 +63,27 @@ void QuadcopterFrame::euler_step(const float dt) {
             << position_(2) << '\n';
   std::cout << "Velocity:" << velocity_(0) << '\t' << velocity_(1) << '\t'
             << velocity_(2) << '\n';
+  std::cout << "Orientation:" << orientation_(0) << '\t' << orientation_(1)
+            << '\t' << orientation_(2) << '\t' << orientation_(3) << '\n';
+  std::cout << "Angular Velocity:" << angular_velocity_(0) << '\t'
+            << angular_velocity_(1) << '\t' << angular_velocity_(2) << '\n';
+}
+
+///
+void QuadcopterFrame::attitude_tune_euler_step(const float dt) {
+
+  // Rotation
+  orientation_ = orientation_ * orientation_dot_;
+  // Is normalization required here ?
+  orientation_.normalize();
+
+  angular_velocity_ = angular_velocity_ + angular_acceleration_ * dt;
+
+  // Store update euler angle representation
+  set_euler_orientation();
+
+  // Plot variables for debugging
+
   std::cout << "Orientation:" << orientation_(0) << '\t' << orientation_(1)
             << '\t' << orientation_(2) << '\t' << orientation_(3) << '\n';
   std::cout << "Angular Velocity:" << angular_velocity_(0) << '\t'

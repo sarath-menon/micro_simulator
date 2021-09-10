@@ -57,6 +57,8 @@ public:
   void dynamics(const float motor_commands[4], const float dt);
   // Quadcopter dynamics
   void euler_step(const float dt);
+  // Rotation only simulation for tuning attitude controller
+  void attitude_tune_euler_step(const float dt);
 
 public:
   /// Getter function

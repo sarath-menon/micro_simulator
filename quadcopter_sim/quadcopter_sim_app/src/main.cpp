@@ -33,11 +33,13 @@ int main() {
     quad.sensor_read();
 
     // Outer loop
-    const float thrust_command =
-        controller.altitude_controller(quad, 5, sim.dt());
+    float thrust_command = controller.altitude_controller(quad, 5, sim.dt());
 
-    const float attitude_command =
+    float attitude_command =
         controller.horizontal_controller(quad, 4, sim.dt());
+
+    attitude_command = 30;
+    thrust_command = 0;
 
     torque_commands[0] =
         controller.roll_angle_controller(quad, attitude_command, sim.dt());
@@ -53,8 +55,11 @@ int main() {
     // Dynamics function that accepts motor commands instead of thrusts
     quad.dynamics(motor_commands, sim.dt());
 
-    // quad.dynamics(ff_thrust, torque_command);
-    quad.euler_step(sim.dt());
+    // // Simulate using explicit Euler integration
+    // quad.euler_step(sim.dt());
+
+    // Simulate only rotational dynamics
+    quad.attitude_tune_euler_step(sim.dt());
 
     // Plot variables for debugging
     //////////////////////////////////////////////////////////////////////////////////
