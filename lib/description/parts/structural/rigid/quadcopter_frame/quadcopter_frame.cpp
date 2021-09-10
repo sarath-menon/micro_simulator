@@ -3,13 +3,11 @@
 
 // Setter functions
 
-QuadcopterFrame ::QuadcopterFrame() {
-  inertia_matrix_inv_ = inv(inertia_matrix_);
-}
+QuadcopterFrame ::QuadcopterFrame() {}
 
 /// Equations of motion for a quadcopter frames
 void QuadcopterFrame::dynamics(const matrix::Vector3<float> body_thrust,
-                               const matrix::Vector3<float> body_torque,
+                               const matrix::Vector3<float> body_torques,
                                const float dt) {
 
   // Compute body to inertial frame transformation
@@ -22,28 +20,42 @@ void QuadcopterFrame::dynamics(const matrix::Vector3<float> body_thrust,
   // Angular velocity
   orientation_dot_ = matrix::Quatf::expq(0.5f * dt * angular_velocity_);
 
+  // // Angular acceleration
+  // angular_acceleration_ =
+  //     inertia_matrix_inv_ *
+  //     (body_torques -
+  //      angular_velocity_.cross(inertia_matrix_ * angular_velocity_) -
+  //      (angular_drag_coeff_ * angular_velocity_));
+
   // Angular acceleration
   angular_acceleration_ =
-      inertia_matrix_inv_ *
-      (body_torque -
-       angular_velocity_.cross(inertia_matrix_ * angular_velocity_) -
-       (angular_drag_coeff_ * angular_velocity_));
+      inertia_matrix_inverse_ *
+      (body_torques -
+       angular_velocity_.cross(inertia_matrix_ * angular_velocity_));
 
   // Plot variables for debugging
-  // std::cout << "Acceleration:" << acceleration_(0) << '\t' <<
-  // acceleration_(1)
+  // std::cout << "Acceleration:" << acceleration_(0) <<
+  // '\t' << acceleration_(1)
   //           << '\t' << acceleration_(2) << '\n';
 
   std::cout << "Angular acceleration:" << angular_acceleration_(0) << '\t'
             << angular_acceleration_(1) << '\t' << angular_acceleration_(2)
             << '\n';
 
-  // std::cout << "Body thrust:" << body_thrust(0) << '\t' << body_thrust(1)
-  //           << '\t' << body_thrust(2) << '\n';
+  // std::cout << "Angular acceleration debug term:"
+  //           << angular_velocity_.cross(inertia_matrix_ *
+  //           angular_velocity_)(0)
+  //           << '\t'
+  //           << angular_velocity_.cross(inertia_matrix_ *
+  //           angular_velocity_)(1)
+  //           << '\t'
+  //           << angular_velocity_.cross(inertia_matrix_ *
+  //           angular_velocity_)(2)
+  //           << '\n';
 
   const matrix::Vector3<float> air_drag = linear_drag_coeff_ * velocity_;
-  std::cout << "Drag term:" << air_drag(0) << '\t' << air_drag(1) << '\t'
-            << air_drag(2) << '\t' << '\n';
+  // std::cout << "Drag term:" << air_drag(0) << '\t' << air_drag(1) << '\t'
+  //           << air_drag(2) << '\t' << '\n';
 }
 
 /// Represents the quadcopter

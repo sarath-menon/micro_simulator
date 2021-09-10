@@ -32,4 +32,7 @@ void Quadcopter::motor_speed_to_thrust_torque(const float motor_commands[4]) {
   //           << propeller_thrusts[3] << '\n';
 
   // std::cout << "Simulator thrust command:" << body_thrust(2) << '\n';
+
+  // std::cout << "Torques in simulator:" << body_torques(0) << '\t'
+  //           << body_torques(1) << '\t' << body_torques(2) << '\n';
 }

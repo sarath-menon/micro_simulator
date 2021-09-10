@@ -24,7 +24,7 @@ void Quadcopter::set_parameters() {
   frame_inertia[2][2] = yaml_file["inertia_zz"].as<float>();
 
   frame.set_inertia_matrix(frame_inertia);
-  frame.set_inertia_matrix_inverse(frame.inertia_matrix());
+  frame.set_inertia_matrix_inverse();
 
   // Set linear and angular drag coeffeicnts
   float linear_drag_coeff[3] = {0, 0, 0};

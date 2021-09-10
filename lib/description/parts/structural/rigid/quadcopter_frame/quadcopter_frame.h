@@ -48,7 +48,7 @@ protected:
   matrix::Dcmf _R_OB;
 
   /// No need to computer inverse of inertia matrix in each function call
-  matrix::SquareMatrix<float, 3> inertia_matrix_inv_;
+  matrix::SquareMatrix<float, 3> inertia_matrix_inverse_;
 
   // Constants
 private:
@@ -103,13 +103,13 @@ public:
 
   void set_arm_length(float arm_length) { arm_length_ = arm_length; }
 
-  void set_inertia_matrix_inverse(
-      matrix::SquareMatrix<float, 3> inertia_matrix_inverse) {
-    inertia_matrix_inv_ = inertia_matrix_inverse;
+  void set_inertia_matrix_inverse() {
+    inertia_matrix_inverse_(0, 0) = 1 / inertia_matrix_(0, 0);
+    inertia_matrix_inverse_(1, 1) = 1 / inertia_matrix_(1, 1);
+    inertia_matrix_inverse_(1, 1) = 1 / inertia_matrix_(1, 1);
   }
 
   void set_euler_orientation() {
-
     matrix::Eulerf euler_orientation(orientation_);
     euler_orientation_ = euler_orientation * (180 / M_PI);
   }
