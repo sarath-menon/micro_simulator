@@ -19,8 +19,6 @@ void QuadcopterFrame::dynamics(const matrix::Vector3<float> body_thrust,
   acceleration_ =
       (_R_OB * body_thrust) - gravity_acc - (linear_drag_coeff_ * velocity_);
 
-  // acceleration_ = -gravity_acc - linear_drag_coeff_ * velocity_;
-
   // Angular velocity
   orientation_dot_ = matrix::Quatf::expq(0.5f * dt * angular_velocity_);
 
@@ -35,6 +33,10 @@ void QuadcopterFrame::dynamics(const matrix::Vector3<float> body_thrust,
   // std::cout << "Acceleration:" << acceleration_(0) << '\t' <<
   // acceleration_(1)
   //           << '\t' << acceleration_(2) << '\n';
+
+  std::cout << "Angular acceleration:" << angular_acceleration_(0) << '\t'
+            << angular_acceleration_(1) << '\t' << angular_acceleration_(2)
+            << '\n';
 
   // std::cout << "Body thrust:" << body_thrust(0) << '\t' << body_thrust(1)
   //           << '\t' << body_thrust(2) << '\n';

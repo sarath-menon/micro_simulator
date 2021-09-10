@@ -17,13 +17,14 @@ void Quadcopter::set_parameters() {
   frame.set_arm_length(yaml_file["arm_length"].as<float>());
 
   // Set inertia matrix
-  float frame_intertia[3][3] = {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}};
+  float frame_inertia[3][3] = {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}};
 
-  frame_intertia[0][0] = yaml_file["inertia_xx"].as<float>();
-  frame_intertia[1][1] = yaml_file["inertia_yy"].as<float>();
-  frame_intertia[2][2] = yaml_file["inertia_zz"].as<float>();
+  frame_inertia[0][0] = yaml_file["inertia_xx"].as<float>();
+  frame_inertia[1][1] = yaml_file["inertia_yy"].as<float>();
+  frame_inertia[2][2] = yaml_file["inertia_zz"].as<float>();
 
-  frame.set_inertia_matrix(frame_intertia);
+  frame.set_inertia_matrix(frame_inertia);
+  frame.set_inertia_matrix_inverse(frame.inertia_matrix());
 
   // Set linear and angular drag coeffeicnts
   float linear_drag_coeff[3] = {0, 0, 0};
@@ -80,26 +81,24 @@ void Quadcopter::set_parameters() {
       (motor[0].thrust_max() - motor[0].thrust_min()) * frame.arm_length();
 
   // Thrust allocation matrix
-  const float l_inv = 1 / frame.arm_length();
-  const float k_inv = 1 / motor[0].k_t();
 
   mixer_matrix_(0, 0) = 0.25;
   mixer_matrix_(0, 1) = 0.0;
-  mixer_matrix_(0, 2) = 0.5 * l_inv;
-  mixer_matrix_(0, 3) = 0.25 * k_inv;
+  mixer_matrix_(0, 2) = 0.5 / frame.arm_length();
+  mixer_matrix_(0, 3) = 0.25 / motor[0].k_t();
 
   mixer_matrix_(1, 0) = 0.25;
-  mixer_matrix_(1, 1) = 0.5 * l_inv;
+  mixer_matrix_(1, 1) = 0.5 / frame.arm_length();
   mixer_matrix_(1, 2) = 0.0;
-  mixer_matrix_(1, 3) = -0.25 * k_inv;
+  mixer_matrix_(1, 3) = -0.25 / motor[0].k_t();
 
   mixer_matrix_(2, 0) = 0.25;
   mixer_matrix_(2, 1) = 0.0;
-  mixer_matrix_(2, 2) = -0.5 * l_inv;
-  mixer_matrix_(2, 3) = 0.25 * k_inv;
+  mixer_matrix_(2, 2) = -0.5 / frame.arm_length();
+  mixer_matrix_(2, 3) = 0.25 / motor[0].k_t();
 
   mixer_matrix_(3, 0) = 0.25;
-  mixer_matrix_(3, 1) = -0.5 * l_inv;
+  mixer_matrix_(3, 1) = -0.5 / frame.arm_length();
   mixer_matrix_(3, 2) = 0.0;
-  mixer_matrix_(3, 3) = -0.25 * k_inv;
+  mixer_matrix_(3, 3) = -0.25 / motor[0].k_t();
 }
