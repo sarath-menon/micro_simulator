@@ -19,7 +19,11 @@ int main() {
 
   // Declare for now
   float motor_commands[4] = {0, 0, 0, 0};
-  float torque_commands[3] = {0, 0, 0};
+  // float torque_commands[3] = {0, 0, 0};
+
+  matrix::Vector3f body_thrust_command;
+  matrix::Vector3f body_torque_command;
+  matrix::Vector3f attitude_command;
 
   ///////////////////////////////////////////////////////////////////////////////////////////
   // Start Simulation
@@ -32,24 +36,26 @@ int main() {
     // Get system state
     quad.sensor_read();
 
-    // Outer loop
-    float thrust_command = controller.altitude_controller(quad, 5, sim.dt());
+    // // Outer loop
+    // body_thrust_command(2) =
+    //     controller.altitude_controller(quad, 5, sim.dt());
 
-    float attitude_command =
-        controller.horizontal_controller(quad, 4, sim.dt());
+    //  attitude_command(0) =
+    //     controller.horizontal_controller(quad, 4, sim.dt());
 
-    attitude_command = 30;
-    thrust_command = 0;
+    // For Atittude controller tuning
+    attitude_command(0) = 30;
+    body_thrust_command(2) = 0;
 
-    torque_commands[0] =
-        controller.roll_angle_controller(quad, attitude_command, sim.dt());
+    body_torque_command(0) =
+        controller.roll_angle_controller(quad, attitude_command(0), sim.dt());
 
     // std::cout << "Roll torque command:" << torque_commands[0] << '\n';
     // // // test altitude controller first
     // float torque_commands[3] = {0, 0, 0};
 
     // Convert thrust, torque to motor speeds
-    motor_mixing(quad, motor_commands, thrust_command, torque_commands,
+    motor_mixing(quad, motor_commands, body_thrust_command, body_torque_command,
                  quad.motor[0].k_f(), quad.frame.arm_length());
 
     // Dynamics function that accepts motor commands instead of thrusts

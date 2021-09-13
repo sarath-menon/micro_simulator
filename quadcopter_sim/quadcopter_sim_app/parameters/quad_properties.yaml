@@ -13,14 +13,14 @@ inertia_zz: 0.0020
 motor_time_constant: 0.05
 
 # Air drag coefficients
-linear_drag_coeff_x: 0.0
-linear_drag_coeff_y: 0.0
+linear_drag_coeff_x: 1.0
+linear_drag_coeff_y: 1.0
 linear_drag_coeff_z: 1.2
 
 # Air drag coefficients
-angular_drag_coeff_x: 0.0
-angular_drag_coeff_y: 0.0
-angular_drag_coeff_z: 0.0
+angular_drag_coeff_x: 0.025
+angular_drag_coeff_y: 0.025
+angular_drag_coeff_z: 0.025
 
 # Maximum thrust can be produced by the motors
 thrust_max: 6.25

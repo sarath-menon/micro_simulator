@@ -25,10 +25,15 @@ private:
   // Thrust produced by each propeller
   float propeller_thrusts[4] = {0, 0, 0, 0};
 
+  // // Net thrust acting on the quadcopter
+  // matrix::Vector3f body_thrust;
+  // // Net torques acting on the quadcopter
+  // matrix::Vector3f body_torques;
+
   // Net thrust acting on the quadcopter
-  matrix::Vector3f body_thrust;
+  matrix::Vector3f body_thrust_command;
   // Net torques acting on the quadcopter
-  matrix::Vector3f body_torques;
+  matrix::Vector3f body_torque_command;
 
   // Maximum thrust can be produced by the quadcopter
   float thrust_max_ = 0;
@@ -55,6 +60,10 @@ public:
   void motor_speed_to_thrust_torque(const float motor_commands[4]);
   // Quadcopter dynamics
   void dynamics(const float motor_commands[4], const float dt);
+  // Quadcopter dynamics with direct body thryst, torque input
+  void dynamics_direct_thrust_torque(matrix::Vector3f body_thrust_command,
+                                     matrix::Vector3f body_torque_command,
+                                     const float dt);
   // Quadcopter dynamics
   void euler_step(const float dt);
   // Rotation only simulation for tuning attitude controller

@@ -4,11 +4,11 @@
 plot_enable: true
 
 # Translation
-x_flag: true
+x_flag: false
 
-y_flag: true
+y_flag: false
 
-z_flag: true
+z_flag: false
 
 # Rotation
 roll_angle_flag: true

@@ -6,8 +6,8 @@
 QuadcopterFrame ::QuadcopterFrame() {}
 
 /// Equations of motion for a quadcopter frames
-void QuadcopterFrame::dynamics(const matrix::Vector3<float> body_thrust,
-                               const matrix::Vector3<float> body_torques,
+void QuadcopterFrame::dynamics(const matrix::Vector3f body_thrust,
+                               const matrix::Vector3f body_torques,
                                const float dt) {
 
   // Compute body to inertial frame transformation
