@@ -54,12 +54,17 @@ int main() {
     // // // test altitude controller first
     // float torque_commands[3] = {0, 0, 0};
 
-    // Convert thrust, torque to motor speeds
-    motor_mixing(quad, motor_commands, body_thrust_command, body_torque_command,
-                 quad.motor[0].k_f(), quad.frame.arm_length());
+    // // Convert thrust, torque to motor speeds
+    // motor_mixing(quad, motor_commands, body_thrust_command,
+    // body_torque_command,
+    //              quad.motor[0].k_f(), quad.frame.arm_length());
 
-    // Dynamics function that accepts motor commands instead of thrusts
-    quad.dynamics(motor_commands, sim.dt());
+    // // Dynamics function that accepts motor commands i
+    // quad.dynamics(motor_commands, sim.dt());
+
+    // Dynamics function that accepts bidy thrust, torque commands
+    quad.dynamics_direct_thrust_torque(body_thrust_command, body_torque_command,
+                                       sim.dt());
 
     // // Simulate using explicit Euler integration
     // quad.euler_step(sim.dt());

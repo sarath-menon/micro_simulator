@@ -31,9 +31,9 @@ private:
   // matrix::Vector3f body_torques;
 
   // Net thrust acting on the quadcopter
-  matrix::Vector3f body_thrust_command;
+  matrix::Vector3f body_thrust_command_;
   // Net torques acting on the quadcopter
-  matrix::Vector3f body_torque_command;
+  matrix::Vector3f body_torque_command_;
 
   // Maximum thrust can be produced by the quadcopter
   float thrust_max_ = 0;
