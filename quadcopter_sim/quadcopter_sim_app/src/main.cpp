@@ -4,6 +4,9 @@
 #include "quadcopter.h"
 #include "simulator.h"
 #include <iostream>
+// Fastdds Headers
+#include "mocap_quadcopterPubSubTypes.h"
+#include "mocap_quadcopterPublisher.h"
 
 int main() {
 
@@ -17,7 +20,15 @@ int main() {
   quad.set_parameters();
   quad.set_initial_conditions();
 
-  // To be moved
+  // // Fastdds publisher and message initialization
+  mocap_quadcopterPublisher pose_pub;
+  bool fastdds_flag = false;
+
+  if (sim.pose_pub_flag()) {
+    fastdds_flag = pose_pub.init();
+  }
+
+  // To be moved to external controller file
   const float altitude_target = 5;
   const float horizontal_target = 3;
 
@@ -88,6 +99,21 @@ int main() {
       plot_var::thrust_plot[i] = body_thrust_command(2);
 
       plot_var::t_plot[i] = i * sim.dt();
+    }
+
+    if (fastdds_flag) {
+      // Publish mocap msg
+      mocap_quadcopter msg;
+
+      msg.index({(uint32_t)i + 1});
+      msg.position({quad.position()(0) * 100, quad.position()(1) * 100,
+                    quad.position()(0) * 100});
+      // msg.orientation_quaternion({0, 0, 0, 1});
+      msg.orientation_quaternion({quad.orientation()(1), quad.orientation()(2),
+                                  quad.orientation()(3),
+                                  quad.orientation()(0)});
+      pose_pub.run(msg);
+      std::this_thread::sleep_for(std::chrono::milliseconds(sim.sim_time()));
     }
   }
 

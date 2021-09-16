@@ -10,4 +10,6 @@ void Simulator::set_parameters(std::string path) {
   euler_steps_ = yaml_file["euler_steps"].as<float>();
 
   pose_pub_flag_ = yaml_file["pose_pub"].as<bool>();
+
+  sim_time_ = dt_ * 1000;
 }

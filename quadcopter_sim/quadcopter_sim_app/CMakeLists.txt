@@ -16,7 +16,6 @@ parts_lib
 helper_lib
 controller_lib
 simulator_lib
-mocap_fastdds_lib
 )
 
 
@@ -25,4 +24,6 @@ yaml-cpp
 mahi::gui
 fastcdr 
 fastrtps
+mocap_fastdds_lib
+msg_lib
 )

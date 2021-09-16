@@ -12,6 +12,8 @@ private:
   float euler_steps_ = 0;
   // Activate fastdds pose publisher
   bool pose_pub_flag_ = false;
+  // SImulation timestep in milliseconds
+  int sim_time_;
 
 public:
   // Loads the quadcopter properties from the yaml file
@@ -22,4 +24,8 @@ public:
   const float dt() const { return dt_; }
   /// Getter function
   const float euler_steps() const { return euler_steps_; }
+  /// Getter function
+  const int sim_time() const { return sim_time_; }
+  /// Getter function
+  const bool pose_pub_flag() const { return pose_pub_flag_; }
 };
