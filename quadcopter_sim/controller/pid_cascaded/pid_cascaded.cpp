@@ -43,7 +43,7 @@ float PidCascadedController::roll_angle_controller(const Quadcopter &quad,
   float torque_command = attitude_pid(angle_error, k_p__b, k_i__b, k_d__b, dt);
 
   torque_command =
-      limit(torque_command, quad.roll_torque_max(), -quad.pitch_torque_max());
+      limit(torque_command, quad.roll_torque_max(), -quad.roll_torque_max());
 
   return torque_command;
 };

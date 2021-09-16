@@ -37,11 +37,9 @@ int main() {
     quad.sensor_read();
 
     // Outer loop
-    body_thrust_command(2) =
-        controller.altitude_controller(quad, quad.altitude_target(), sim.dt());
+    body_thrust_command(2) = controller.altitude_controller(quad, 5, sim.dt());
 
-    attitude_command(0) = controller.horizontal_controller(
-        quad, quad.horizontal_target(), sim.dt());
+    attitude_command(0) = controller.horizontal_controller(quad, 0, sim.dt());
 
     body_torque_command(0) =
         controller.roll_angle_controller(quad, attitude_command(0), sim.dt());
@@ -82,6 +80,8 @@ int main() {
       plot_var::yaw_angle_plot[i] = quad.frame.euler_orientation()(2);
 
       plot_var::thrust_plot[i] = body_thrust_command(2);
+
+      plot_var::roll_torque_plot[i] = body_torque_command(0);
 
       plot_var::t_plot[i] = i * sim.dt();
     }

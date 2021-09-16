@@ -4,21 +4,21 @@
 plot_enable: false
 
 # Translation
-x_flag: false
+x_flag: true
 
-y_flag: false
+y_flag: true
 
-z_flag: false
+z_flag: true
 
 # Rotation
 roll_angle_flag: true
 
-pitch_angle_flag: true
+pitch_angle_flag: false
 
-yaw_angle_flag: true
+yaw_angle_flag: false
 
 # Body thrust
-body_thrust_flag: false
+body_thrust_flag: true
 
 # Body torques
 body_roll_torque_flag: false

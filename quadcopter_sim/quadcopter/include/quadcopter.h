@@ -61,13 +61,18 @@ public:
   // Quadcopter dynamics
   void dynamics(const float motor_commands[4], const float dt);
   // Quadcopter dynamics with direct body thryst, torque input
-  void dynamics_direct_thrust_torque(matrix::Vector3f body_thrust_command,
-                                     matrix::Vector3f body_torque_command,
-                                     const float dt);
+  void
+  dynamics_direct_thrust_torque(const matrix::Vector3f &body_thrust_command,
+                                const matrix::Vector3f &body_torque_command,
+                                const float dt);
   // Quadcopter dynamics
   void euler_step(const float dt);
   // Rotation only simulation for tuning attitude controller
   void attitude_tune_euler_step(const float dt);
+
+  // Controller parameters (to be moved to external controller)
+  float altitude_target_ = 0;
+  float horizontal_target_ = 0;
 
 public:
   /// Getter function
@@ -86,6 +91,10 @@ public:
   const matrix::SquareMatrix<float, 4> mixer_matrix() const {
     return mixer_matrix_;
   }
+  /// Getter function
+  const float altitude_target() const { return altitude_target_; }
+  /// Getter function
+  const float horizontal_target() const { return horizontal_target_; }
 
 public:
   /// Setter function

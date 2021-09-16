@@ -21,8 +21,8 @@ void Quadcopter::dynamics(const float motor_commands[4], const float dt) {
 
 /// Represents the quadcopter
 void Quadcopter::dynamics_direct_thrust_torque(
-    matrix::Vector3f body_thrust_command, matrix::Vector3f body_torque_command,
-    const float dt) {
+    const matrix::Vector3f &body_thrust_command,
+    const matrix::Vector3f &body_torque_command, const float dt) {
 
   // Set internal variables
   body_thrust_command_ = body_thrust_command;

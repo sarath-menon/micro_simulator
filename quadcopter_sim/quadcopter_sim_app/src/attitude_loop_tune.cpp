@@ -36,15 +36,23 @@ int main() {
     // Get system state
     quad.sensor_read();
 
-    // Outer loop
-    body_thrust_command(2) =
-        controller.altitude_controller(quad, quad.altitude_target(), sim.dt());
+    // // Outer loop
+    // body_thrust_command(2) =
+    //     controller.altitude_controller(quad, 5, sim.dt());
 
-    attitude_command(0) = controller.horizontal_controller(
-        quad, quad.horizontal_target(), sim.dt());
+    //  attitude_command(0) =
+    //     controller.horizontal_controller(quad, 4, sim.dt());
+
+    // For Atittude controller tuning
+    attitude_command(0) = 30;
+    body_thrust_command(2) = 0;
 
     body_torque_command(0) =
         controller.roll_angle_controller(quad, attitude_command(0), sim.dt());
+
+    // std::cout << "Roll torque command:" << torque_commands[0] << '\n';
+    // // // test altitude controller first
+    // float torque_commands[3] = {0, 0, 0};
 
     // // Convert thrust, torque to motor speeds
     // motor_mixing(quad, motor_commands, body_thrust_command,
@@ -58,8 +66,11 @@ int main() {
     quad.dynamics_direct_thrust_torque(body_thrust_command, body_torque_command,
                                        sim.dt());
 
-    // Simulate using explicit Euler integration
-    quad.euler_step(sim.dt());
+    // // Simulate using explicit Euler integration
+    // quad.euler_step(sim.dt());
+
+    // Simulate only rotational dynamics
+    quad.attitude_tune_euler_step(sim.dt());
 
     // Plot variables for debugging
     //////////////////////////////////////////////////////////////////////////////////
@@ -81,7 +92,7 @@ int main() {
       plot_var::pitch_angle_plot[i] = quad.frame.euler_orientation()(1);
       plot_var::yaw_angle_plot[i] = quad.frame.euler_orientation()(2);
 
-      plot_var::thrust_plot[i] = body_thrust_command(2);
+      plot_var::roll_torque_plot[i] = body_torque_command(0);
 
       plot_var::t_plot[i] = i * sim.dt();
     }

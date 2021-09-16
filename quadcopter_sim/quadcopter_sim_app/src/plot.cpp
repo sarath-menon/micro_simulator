@@ -99,7 +99,7 @@ void MyApp::update() {
     if (ImPlot::BeginPlot("Torque input vs Time", "time",
                           "Torque Input [Nm/kg]", ImVec2(-1, 200))) {
       ImPlot::PlotLine("torque input", plot_var::t_plot,
-                       plot_var::torque_roll_plot, plot_var::euler_timesteps);
+                       plot_var::roll_torque_plot, plot_var::euler_timesteps);
       ImPlot::EndPlot();
     }
   }
