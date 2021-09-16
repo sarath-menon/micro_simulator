@@ -1,7 +1,7 @@
 # Plot Parameters:
 
 # To enable plotting
-plot_enable: true
+plot_enable: false
 
 # Translation
 x_flag: false
@@ -11,7 +11,7 @@ y_flag: true
 z_flag: true
 
 # Rotation
-roll_angle_flag: true
+roll_angle_flag: false
 
 pitch_angle_flag: false
 

@@ -1,9 +1,5 @@
 # Controller Parameters:
 
-# Altitude Target
-altitude_target: 5
-horizontal_target: 0
-
 # Euler Integration Timestep
 dt: 0.01
 

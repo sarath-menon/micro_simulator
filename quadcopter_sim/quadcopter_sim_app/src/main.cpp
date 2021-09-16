@@ -29,8 +29,8 @@ int main() {
   }
 
   // To be moved to external controller file
-  const float altitude_target = 5;
-  const float horizontal_target = 3;
+  const float altitude_target = 2;
+  const float horizontal_target = 2;
 
   // Declare for now
   float motor_commands[4] = {0, 0, 0, 0};
@@ -106,12 +106,13 @@ int main() {
       mocap_quadcopter msg;
 
       msg.index({(uint32_t)i + 1});
-      msg.position({quad.position()(0) * 100, quad.position()(1) * 100,
-                    quad.position()(0) * 100});
-      // msg.orientation_quaternion({0, 0, 0, 1});
+      msg.position({quad.position()(0) * 1000, quad.position()(1) * 1000,
+                    quad.position()(2) * 1000});
+
       msg.orientation_quaternion({quad.orientation()(1), quad.orientation()(2),
                                   quad.orientation()(3),
                                   quad.orientation()(0)});
+
       pose_pub.run(msg);
       std::this_thread::sleep_for(std::chrono::milliseconds(sim.sim_time()));
     }
