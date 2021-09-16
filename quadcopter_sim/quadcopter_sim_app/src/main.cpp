@@ -17,6 +17,10 @@ int main() {
   quad.set_parameters();
   quad.set_initial_conditions();
 
+  // To be moved
+  const float altitude_target = 5;
+  const float horizontal_target = 3;
+
   // Declare for now
   float motor_commands[4] = {0, 0, 0, 0};
   // float torque_commands[3] = {0, 0, 0};
@@ -38,10 +42,10 @@ int main() {
 
     // Outer loop
     body_thrust_command(2) =
-        controller.altitude_controller(quad, quad.altitude_target(), sim.dt());
+        controller.altitude_controller(quad, altitude_target, sim.dt());
 
-    attitude_command(0) = controller.horizontal_controller(
-        quad, quad.horizontal_target(), sim.dt());
+    attitude_command(0) =
+        controller.horizontal_controller(quad, horizontal_target, sim.dt());
 
     body_torque_command(0) =
         controller.roll_angle_controller(quad, attitude_command(0), sim.dt());

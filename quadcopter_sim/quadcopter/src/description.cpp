@@ -101,14 +101,4 @@ void Quadcopter::set_parameters() {
   mixer_matrix_(3, 1) = -0.5 / frame.arm_length();
   mixer_matrix_(3, 2) = 0.0;
   mixer_matrix_(3, 3) = -0.25 / motor[0].k_t();
-
-  ///////////////////////////////////////////////////////////////////////////////////////////
-  // COntroller parameters (to be moved)
-  ///////////////////////////////////////////////////////////////////////////////////////////
-
-  // Set altitude_target
-  altitude_target_ = yaml_file["mass"].as<float>();
-
-  // Set horizontal_target
-  horizontal_target_ = yaml_file["arm_length"].as<float>();
 }

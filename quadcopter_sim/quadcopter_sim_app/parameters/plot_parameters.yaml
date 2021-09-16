@@ -1,10 +1,10 @@
 # Plot Parameters:
 
 # To enable plotting
-plot_enable: false
+plot_enable: true
 
 # Translation
-x_flag: true
+x_flag: false
 
 y_flag: true
 
@@ -21,7 +21,7 @@ yaw_angle_flag: false
 body_thrust_flag: true
 
 # Body torques
-body_roll_torque_flag: false
+body_roll_torque_flag: true
 
 body_pitch_torque_flag: false
 

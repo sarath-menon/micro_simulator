@@ -24,13 +24,18 @@ float PidCascadedController::horizontal_controller(
     const Quadcopter &quad, const float horizontal_target, const float dt) {
 
   // Compute error
-  const float horizontal_error = horizontal_target - quad.position()(0);
+  const float horizontal_error = horizontal_target - quad.position()(1);
+
+  std::cout << "Horizontal error:" << horizontal_error << '\n';
 
   // Compute required attitude
   float attitude_command =
       horizontal_pid(horizontal_error, k_p__x, k_i__x, k_d__x, dt) / 9.81;
 
-  attitude_command = limit(attitude_command, quad.roll_max(), -quad.roll_max());
+  attitude_command =
+      -limit(attitude_command, quad.roll_max(), -quad.roll_max());
+
+  std::cout << "Attitude command:" << attitude_command << '\n';
 
   return attitude_command;
 };
@@ -39,6 +44,7 @@ float PidCascadedController::roll_angle_controller(const Quadcopter &quad,
                                                    const float attitude_target,
                                                    const float dt) {
   const float angle_error = attitude_target - quad.frame.euler_orientation()(0);
+  std::cout << "Roll angle error:" << angle_error << '\n';
 
   float torque_command = attitude_pid(angle_error, k_p__b, k_i__b, k_d__b, dt);
 
