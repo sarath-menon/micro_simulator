@@ -55,15 +55,19 @@ int main() {
     // Get system state
     quad.sensor_read();
 
-    // Outer loop
+    // Altitude controller
     body_thrust_command(2) =
         controller.altitude_controller(quad, z_target, sim.dt());
 
-    attitude_command(0) =
-        controller.horizontal_controller(quad, y_target, sim.dt());
+    // Reduced attitude controller
+    attitude_command(0) = controller.y_pos_controller(quad, y_target, sim.dt());
+    attitude_command(1) = controller.x_pos_controller(quad, x_target, sim.dt());
 
+    // Angular rate controllers
     body_torque_command(0) =
         controller.roll_angle_controller(quad, attitude_command(0), sim.dt());
+    body_torque_command(1) =
+        controller.pitch_angle_controller(quad, attitude_command(1), sim.dt());
 
     // Dynamics function that accepts bidy thrust, torque commands
     quad.dynamics_direct_thrust_torque(body_thrust_command, body_torque_command,

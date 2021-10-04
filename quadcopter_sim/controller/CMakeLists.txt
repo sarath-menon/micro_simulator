@@ -1,18 +1,1 @@
-
-add_library(controller_lib STATIC
-pid_cascaded/pid_cascaded.cpp
-pid_cascaded/pid_controllers.cpp
-)
-
-target_include_directories(controller_lib PUBLIC
-controller_common
-pid_cascaded
-)
-
-target_link_libraries(controller_lib PRIVATE
-quadcopter_lib
-primitives_lib
-parts_lib
-yaml-cpp
-)
-
+add_subdirectory(pid_cascaded)
