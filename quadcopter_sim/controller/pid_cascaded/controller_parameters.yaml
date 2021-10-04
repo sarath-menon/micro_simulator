@@ -5,16 +5,12 @@ k_p__z: 7
 k_i__z: 0
 k_d__z: 3.0
 
-# # Translation PID Gains
-# k_p__x: 70
-# k_i__x: 0
-# k_d__x: 38
 # Translation PID Gains
 k_p__x: 300
 k_i__x: 0
 k_d__x: 150
 
 # Angle PID Gains
-k_p__b: 0.04
+k_p__b: 0.035
 k_i__b: 0
-k_d__b: 0.002
+k_d__b: 0.003
