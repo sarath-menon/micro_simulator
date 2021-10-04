@@ -49,20 +49,28 @@ namespace plot_var {
 constexpr static int euler_timesteps = 500;
 
 // Variables to be plotted
-inline float x_plot[euler_timesteps];
-inline float y_plot[euler_timesteps];
-inline float z_plot[euler_timesteps];
+inline float x[euler_timesteps];
+inline float y[euler_timesteps];
+inline float z[euler_timesteps];
 
-inline float roll_angle_plot[euler_timesteps];
-inline float pitch_angle_plot[euler_timesteps];
-inline float yaw_angle_plot[euler_timesteps];
+inline float roll_angle[euler_timesteps];
+inline float pitch_angle[euler_timesteps];
+inline float yaw_angle[euler_timesteps];
 
-inline float thrust_plot[euler_timesteps];
-inline float roll_torque_plot[euler_timesteps];
-inline float pitch_torque_plot[euler_timesteps];
-inline float yaw_torque_plot[euler_timesteps];
+inline float x_setpoint[euler_timesteps];
+inline float y_setpoint[euler_timesteps];
+inline float z_setpoint[euler_timesteps];
 
-inline float t_plot[euler_timesteps];
+inline float roll_angle_setpoint[euler_timesteps];
+inline float pitch_angle_setpoint[euler_timesteps];
+inline float yaw_angle_setpoint[euler_timesteps];
+
+inline float thrust[euler_timesteps];
+inline float roll_torque[euler_timesteps];
+inline float pitch_torque[euler_timesteps];
+inline float yaw_torque[euler_timesteps];
+
+inline float t[euler_timesteps];
 
 // Plot axes limits
 constexpr static int x_min = 0;

@@ -15,8 +15,12 @@ void MyApp::update() {
     ImPlot::SetNextPlotLimits(plot_var::x_min, plot_var::x_max, 0, 5);
     if (ImPlot::BeginPlot("x axis distance vs time", "time", "x distance [m]",
                           ImVec2(-1, 200))) {
-      ImPlot::PlotLine("vertical distance", plot_var::t_plot, plot_var::x_plot,
+      ImPlot::PlotLine("vertical distance", plot_var::t, plot_var::x,
                        plot_var::euler_timesteps);
+      ImPlot::PushColormap(ImPlotColormap_Cool);
+      ImPlot::PlotLine("setpoint", plot_var::t, plot_var::x_setpoint,
+                       plot_var::euler_timesteps);
+      ImPlot::PopColormap();
       ImPlot::EndPlot();
     }
   }
@@ -27,8 +31,12 @@ void MyApp::update() {
     ImPlot::SetNextPlotLimits(plot_var::x_min, plot_var::x_max, 0, 5);
     if (ImPlot::BeginPlot("y axis distance vs time", "time", "y distance [m]",
                           ImVec2(-1, 200))) {
-      ImPlot::PlotLine("vertical distance", plot_var::t_plot, plot_var::y_plot,
+      ImPlot::PlotLine("vertical distance", plot_var::t, plot_var::y,
                        plot_var::euler_timesteps);
+      ImPlot::PushColormap(ImPlotColormap_Cool);
+      ImPlot::PlotLine("setpoint", plot_var::t, plot_var::y_setpoint,
+                       plot_var::euler_timesteps);
+      ImPlot::PopColormap();
       ImPlot::EndPlot();
     }
   }
@@ -38,8 +46,12 @@ void MyApp::update() {
     ImPlot::SetNextPlotLimits(plot_var::x_min, plot_var::x_max, 0, 8);
     if (ImPlot::BeginPlot("z axis distance vs time", "time", "z distance [m]",
                           ImVec2(-1, 200))) {
-      ImPlot::PlotLine("altitude", plot_var::t_plot, plot_var::z_plot,
+      ImPlot::PlotLine("altitude", plot_var::t, plot_var::z,
                        plot_var::euler_timesteps);
+      ImPlot::PushColormap(ImPlotColormap_Cool);
+      ImPlot::PlotLine("setpoint", plot_var::t, plot_var::z_setpoint,
+                       plot_var::euler_timesteps);
+      ImPlot::PopColormap();
       ImPlot::EndPlot();
     }
   }
@@ -50,8 +62,12 @@ void MyApp::update() {
     ImPlot::PushColormap(ImPlotColormap_Pastel);
     if (ImPlot::BeginPlot("roll angle vs Time", "time", "roll angle [deg]",
                           ImVec2(-1, 200))) {
-      ImPlot::PlotLine("torque input", plot_var::t_plot,
-                       plot_var::roll_angle_plot, plot_var::euler_timesteps);
+      ImPlot::PlotLine("roll angle", plot_var::t, plot_var::roll_angle,
+                       plot_var::euler_timesteps);
+      ImPlot::PushColormap(ImPlotColormap_Cool);
+      ImPlot::PlotLine("setpoint", plot_var::t, plot_var::roll_angle_setpoint,
+                       plot_var::euler_timesteps);
+      ImPlot::PopColormap();
       ImPlot::EndPlot();
     }
   }
@@ -62,8 +78,8 @@ void MyApp::update() {
     ImPlot::PushColormap(ImPlotColormap_Pastel);
     if (ImPlot::BeginPlot("pitch angle vs Time", "time", "pitch angle [deg]",
                           ImVec2(-1, 200))) {
-      ImPlot::PlotLine("torque input", plot_var::t_plot,
-                       plot_var::pitch_angle_plot, plot_var::euler_timesteps);
+      ImPlot::PlotLine("torque input", plot_var::t, plot_var::pitch_angle,
+                       plot_var::euler_timesteps);
       ImPlot::EndPlot();
     }
   }
@@ -74,8 +90,8 @@ void MyApp::update() {
     ImPlot::PushColormap(ImPlotColormap_Pastel);
     if (ImPlot::BeginPlot("yaw angle vs Time", "time", "yaw angle [deg]",
                           ImVec2(-1, 200))) {
-      ImPlot::PlotLine("torque input", plot_var::t_plot,
-                       plot_var::yaw_angle_plot, plot_var::euler_timesteps);
+      ImPlot::PlotLine("torque input", plot_var::t, plot_var::yaw_angle,
+                       plot_var::euler_timesteps);
       ImPlot::EndPlot();
     }
   }
@@ -86,7 +102,7 @@ void MyApp::update() {
     ImPlot::PushColormap(ImPlotColormap_Pastel);
     if (ImPlot::BeginPlot("Thrust input vs Time", "time", "thrust input [N/kg]",
                           ImVec2(-1, 200))) {
-      ImPlot::PlotLine("thrust input", plot_var::t_plot, plot_var::thrust_plot,
+      ImPlot::PlotLine("thrust input", plot_var::t, plot_var::thrust,
                        plot_var::euler_timesteps);
       ImPlot::EndPlot();
     }
@@ -98,8 +114,8 @@ void MyApp::update() {
     ImPlot::PushColormap(ImPlotColormap_Pastel);
     if (ImPlot::BeginPlot("Torque input vs Time", "time",
                           "Torque Input [Nm/kg]", ImVec2(-1, 200))) {
-      ImPlot::PlotLine("torque input", plot_var::t_plot,
-                       plot_var::roll_torque_plot, plot_var::euler_timesteps);
+      ImPlot::PlotLine("torque input", plot_var::t, plot_var::roll_torque,
+                       plot_var::euler_timesteps);
       ImPlot::EndPlot();
     }
   }

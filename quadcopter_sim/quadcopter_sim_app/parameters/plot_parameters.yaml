@@ -1,7 +1,7 @@
 # Plot Parameters:
 
 # To enable plotting
-plot_enable: false
+plot_enable: true
 
 # Translation
 x_flag: false
@@ -11,14 +11,14 @@ y_flag: true
 z_flag: true
 
 # Rotation
-roll_angle_flag: false
+roll_angle_flag: true
 
 pitch_angle_flag: false
 
 yaw_angle_flag: false
 
 # Body thrust
-body_thrust_flag: true
+body_thrust_flag: false
 
 # Body torques
 body_roll_torque_flag: true

@@ -29,8 +29,12 @@ int main() {
   }
 
   // To be moved to external controller file
-  const float altitude_target = 2;
-  const float horizontal_target = 2;
+  // const float altitude_target = 2;
+  // const float y_target = 2;
+
+  const float x_target = 0;
+  const float y_target = 2;
+  const float z_target = 2;
 
   // Declare for now
   float motor_commands[4] = {0, 0, 0, 0};
@@ -53,10 +57,10 @@ int main() {
 
     // Outer loop
     body_thrust_command(2) =
-        controller.altitude_controller(quad, altitude_target, sim.dt());
+        controller.altitude_controller(quad, z_target, sim.dt());
 
     attitude_command(0) =
-        controller.horizontal_controller(quad, horizontal_target, sim.dt());
+        controller.horizontal_controller(quad, y_target, sim.dt());
 
     body_torque_command(0) =
         controller.roll_angle_controller(quad, attitude_command(0), sim.dt());
@@ -88,17 +92,23 @@ int main() {
 
     if (plot_flags::plot_enable) {
       // Set variables for plotting
-      plot_var::x_plot[i] = quad.position()(0);
-      plot_var::y_plot[i] = quad.position()(1);
-      plot_var::z_plot[i] = quad.position()(2);
+      plot_var::x[i] = quad.position()(0);
+      plot_var::y[i] = quad.position()(1);
+      plot_var::z[i] = quad.position()(2);
 
-      plot_var::roll_angle_plot[i] = quad.frame.euler_orientation()(0);
-      plot_var::pitch_angle_plot[i] = quad.frame.euler_orientation()(1);
-      plot_var::yaw_angle_plot[i] = quad.frame.euler_orientation()(2);
+      plot_var::roll_angle[i] = quad.frame.euler_orientation()(0);
+      plot_var::pitch_angle[i] = quad.frame.euler_orientation()(1);
+      plot_var::yaw_angle[i] = quad.frame.euler_orientation()(2);
 
-      plot_var::thrust_plot[i] = body_thrust_command(2);
+      plot_var::x_setpoint[i] = x_target;
+      plot_var::y_setpoint[i] = y_target;
+      plot_var::z_setpoint[i] = z_target;
 
-      plot_var::t_plot[i] = i * sim.dt();
+      plot_var::roll_angle_setpoint[i] = attitude_command(0);
+
+      plot_var::thrust[i] = body_thrust_command(2);
+
+      plot_var::t[i] = i * sim.dt();
     }
 
     if (fastdds_flag) {
@@ -114,7 +124,7 @@ int main() {
                                   quad.orientation()(0)});
 
       pose_pub.run(msg);
-      std::this_thread::sleep_for(std::chrono::milliseconds(sim.sim_time()));
+      // std::this_thread::sleep_for(std::chrono::milliseconds(sim.sim_time()));
     }
   }
 
