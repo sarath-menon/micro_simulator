@@ -8,8 +8,7 @@ float PidCascadedController::altitude_controller(const Quadcopter &quad,
   const float altitude_error = altitude_target - quad.position()(2);
 
   // Compute control input
-  float thrust_command =
-      altitude_pid(altitude_error, k_p__z, k_i__z, k_d__z, dt);
+  float thrust_command = z_pos_pid(altitude_error, k_p__z, k_i__z, k_d__z, dt);
 
   // Quadcopter Motors have a maximum and minimum speed limit
   thrust_command =
@@ -30,7 +29,7 @@ float PidCascadedController::horizontal_controller(
 
   // Compute required attitude
   float attitude_command =
-      horizontal_pid(horizontal_error, k_p__x, k_i__x, k_d__x, dt) / 9.81;
+      y_pos_pid(horizontal_error, k_p__x, k_i__x, k_d__x, dt) / 9.81;
 
   attitude_command =
       -limit(attitude_command, quad.roll_max(), -quad.roll_max());
@@ -46,7 +45,8 @@ float PidCascadedController::roll_angle_controller(const Quadcopter &quad,
   const float angle_error = attitude_target - quad.frame.euler_orientation()(0);
   std::cout << "Roll angle error:" << angle_error << '\n';
 
-  float torque_command = attitude_pid(angle_error, k_p__b, k_i__b, k_d__b, dt);
+  float torque_command =
+      roll_angle_pid(angle_error, k_p__b, k_i__b, k_d__b, dt);
 
   torque_command =
       limit(torque_command, quad.roll_torque_max(), -quad.roll_torque_max());

@@ -26,12 +26,18 @@ protected:
   constexpr static float ff_thrust = 9.81;
 
 private:
-  float altitude_pid(const float e, const float k_p, const float k_i,
-                     const float k_d, const float dt);
-  float horizontal_pid(const float e, const float k_p, const float k_i,
+  // Vertical controller pid loops float
+  float z_pos_pid(const float e, const float k_p, const float k_i,
+                  const float k_d, const float dt);
+
+  // Horizontal controller pid loops
+  float x_pos_pid(const float e, const float k_p, const float k_i,
+                  const float k_d, const float dt);
+  float y_pos_pid(const float e, const float k_p, const float k_i,
+                  const float k_d, const float dt);
+
+  float roll_angle_pid(const float e, const float k_p, const float k_i,
                        const float k_d, const float dt);
-  float attitude_pid(const float e, const float k_p, const float k_i,
-                     const float k_d, const float dt);
 
 public:
   float altitude_controller(const Quadcopter &quad, const float altitude_target,
